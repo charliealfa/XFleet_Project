@@ -5,7 +5,7 @@ Feature: LogOutFunctionSmoke
 		#@FLTAPS-986
 		       Given the user is on the login page
 		       When the user logged with "user1" "UserUser123"
-		
+
 
 
 	@FLTAPS-975 @FLTAPS-981
@@ -19,7 +19,7 @@ Feature: LogOutFunctionSmoke
 				When users click the "Logout" button
 		       Then verify page title "Login"
 		       And click step back button
-		       Then verify page title "Login"	
+		       Then verify page title "Login"
 
 
 	@FLTAPS-978 @FLTAPS-981
