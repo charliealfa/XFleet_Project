@@ -1,4 +1,4 @@
-@FLTAPS-979
+@FLTAPS-979 @smoke
 Feature: LoginPageSmoke
 
 
