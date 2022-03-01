@@ -1,6 +1,8 @@
 package com.xfleet.step_definitions;
 
+import com.xfleet.pages.DashBoardPage;
 import com.xfleet.pages.LoginPage;
+import com.xfleet.pages.VehiclesPage;
 import com.xfleet.utilities.BrowserUtils;
 import com.xfleet.utilities.ConfigurationReader;
 import com.xfleet.utilities.Driver;
@@ -10,9 +12,13 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 
+import java.util.Random;
+
 public class LoginPageStepDefs {
 
         LoginPage loginPage = new LoginPage();
+        DashBoardPage dashBoardPage = new DashBoardPage();
+        VehiclesPage vehiclesPage= new VehiclesPage();
 
     @Given("the user is on the login page")
     public void the_user_is_on_the_login_page() {
@@ -80,4 +86,26 @@ public class LoginPageStepDefs {
     public void verifyPasswordInputBulletSign() {
         Assert.assertEquals("password",loginPage.passwordInpt.getAttribute("type"));
     }
+
+    @When("user should click fleet modula")
+    public void userShouldClickFleetModula() {
+       dashBoardPage.navigateTo("Fleet","Vehicles");
+    }
+
+    @Then("user should select a car")
+    public void userShouldSelectACar() {
+
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        vehiclesPage.anyVehicles.click();
+
+
+
+    }
+
+    @Then("user should display add event button")
+    public void userShouldDisplayAddEventButton() {
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        Assert.assertTrue(vehiclesPage.addEventButton.isDisplayed());
+
+        }
 }
