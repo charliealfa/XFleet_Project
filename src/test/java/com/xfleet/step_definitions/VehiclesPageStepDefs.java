@@ -5,6 +5,7 @@ import com.xfleet.pages.VehiclesPage;
 import com.xfleet.utilities.BrowserUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 import java.util.ArrayList;
@@ -42,4 +43,24 @@ public class VehiclesPageStepDefs {
     }
 
     // ESALKAN STEP DEFINITIONS ENDS HERE
+
+    // ErcanAK STEP DEFINITIONS STARTS HERE
+    @When("user should click fleet modula")
+    public void userShouldClickFleetModula() {
+        dashBoardPage.navigateTo("Fleet","Vehicles");
+    }
+
+    @Then("user should select a car")
+    public void userShouldSelectACar() {
+
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        vehiclesPage.anyVehicles.click();
+    }
+
+    @Then("user should display add event button")
+    public void userShouldDisplayAddEventButton() {
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        Assert.assertTrue(vehiclesPage.addEventButton.isDisplayed());
+    }
+    // ErcanAK STEP DEFINITIONS ENDS HERE
 }
