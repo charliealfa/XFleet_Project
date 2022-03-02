@@ -1,7 +1,7 @@
 package com.xfleet.step_definitions;
 
 import com.xfleet.pages.DashBoardPage;
-import com.xfleet.pages.AllCarsPage;
+import com.xfleet.pages.VehiclesPage;
 import com.xfleet.utilities.BrowserUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -10,11 +10,13 @@ import org.junit.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllCarsPageStepDefs {
+public class VehiclesPageStepDefs {
+
 
     DashBoardPage dashBoardPage = new DashBoardPage();
-    AllCarsPage vehiclesPage = new AllCarsPage();
+    VehiclesPage vehiclesPage = new VehiclesPage();
 
+    // ESALKAN STEP DEFINITIONS STARTS HERE
     @And("user navigate to the {string} {string} page")
     public void user_navigate_to_the_page(String tab, String menu) {
         dashBoardPage.waitUntilLoaderScreenDisappear();
@@ -39,5 +41,5 @@ public class AllCarsPageStepDefs {
         Assert.assertEquals("Verify Menu", expectedOptions, actualOptions);
     }
 
-
+    // ESALKAN STEP DEFINITIONS ENDS HERE
 }
