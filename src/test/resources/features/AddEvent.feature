@@ -9,6 +9,6 @@ Feature: Default
 	@FLTAPS-1135
 	Scenario: as a salesmanager sould add event
 
-		When user should click fleet modula
-		Then user should select a car
+		When user should click under "Fleet" "Vehicles"
+		Then user should select any car or row
 		Then user should display add event button

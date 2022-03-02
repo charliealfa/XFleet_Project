@@ -3,8 +3,10 @@ package com.xfleet.step_definitions;
 import com.xfleet.pages.DashBoardPage;
 import com.xfleet.pages.VehiclesPage;
 import com.xfleet.utilities.BrowserUtils;
+import com.xfleet.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 import java.util.ArrayList;
@@ -41,5 +43,27 @@ public class VehiclesPageStepDefs {
         Assert.assertEquals("Verify Menu", expectedOptions, actualOptions);
     }
 
+
+
     // ESALKAN STEP DEFINITIONS ENDS HERE
+
+    //ErcanEAK Starting from here
+    @When("user should click under {string} {string}")
+    public void userShouldClickUnder(String tab, String module) {
+        dashBoardPage.waitUntilLoaderScreenDisappear();
+        dashBoardPage.navigateTo(tab,module);
+    }
+
+    @Then("user should select any car or row")
+    public void userShouldSelectAnyCarOrRow() {
+        BrowserUtils.waitForPageToLoad(15);
+        vehiclesPage.anyVehicles.click();
+
+    }
+
+    @Then("user should display add event button")
+    public void userShouldDisplayAddEventButton() {
+        BrowserUtils.waitForPageToLoad(15);
+        vehiclesPage.addEventButton.isDisplayed();
+    }
 }
