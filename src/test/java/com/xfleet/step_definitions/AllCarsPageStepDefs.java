@@ -1,22 +1,19 @@
 package com.xfleet.step_definitions;
 
 import com.xfleet.pages.DashBoardPage;
-import com.xfleet.pages.VehiclesPage;
+import com.xfleet.pages.AllCarsPage;
 import com.xfleet.utilities.BrowserUtils;
-import com.xfleet.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class VehiclesPageStepDefs {
+public class AllCarsPageStepDefs {
 
     DashBoardPage dashBoardPage = new DashBoardPage();
-    VehiclesPage vehiclesPage = new VehiclesPage();
+    AllCarsPage vehiclesPage = new AllCarsPage();
 
     @And("user navigate to the {string} {string} page")
     public void user_navigate_to_the_page(String tab, String menu) {

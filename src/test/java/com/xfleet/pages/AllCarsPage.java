@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VehiclesPage extends BasePage {
+public class AllCarsPage extends BasePage {
 
     @FindBy(xpath = "//button[@data-toggle='dropdown' and @class='btn dropdown-toggle ']")
     public WebElement viewPerPageDropDownButton;
@@ -25,6 +25,4 @@ public class VehiclesPage extends BasePage {
         }
         return dropDownOptionsText;
     }
-
-
 }
