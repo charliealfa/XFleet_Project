@@ -15,7 +15,6 @@ public class DashBoardPage extends BasePage {
     @FindBy(linkText = "Logout")
     public WebElement logOutBtn;
 
-
     public DashBoardPage(){
         PageFactory.initElements(Driver.get(),this);
     }
