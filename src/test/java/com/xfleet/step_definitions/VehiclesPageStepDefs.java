@@ -3,12 +3,15 @@ package com.xfleet.step_definitions;
 import com.xfleet.pages.DashBoardPage;
 import com.xfleet.pages.VehiclesPage;
 import com.xfleet.utilities.BrowserUtils;
+import com.xfleet.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.bouncycastle.jcajce.provider.symmetric.util.BaseWrapCipher;
 import org.junit.Assert;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class VehiclesPageStepDefs {
@@ -16,6 +19,7 @@ public class VehiclesPageStepDefs {
 
     DashBoardPage dashBoardPage = new DashBoardPage();
     VehiclesPage vehiclesPage = new VehiclesPage();
+    private List<String> mandatorySymbol;
 
     // ESALKAN STEP DEFINITIONS STARTS HERE
     @And("user navigate to the {string} {string} page")
@@ -75,5 +79,31 @@ public class VehiclesPageStepDefs {
         vehiclesPage.waitUntilLoaderScreenDisappear();
         vehiclesPage.anyVehicles.click();
     }
+
+    @Then("user can click add event button")
+    public void userCanClickAddEventButton() {
+       // vehiclesPage.waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitFor(5);
+        vehiclesPage.addEventButton.click();
+    }
+
+    @Then("user should display add event pop up")
+    public void userShouldDisplayAddEventPopUp() {
+      // vehiclesPage.waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitFor(7);
+
+
+        try {
+            Assert.assertTrue(vehiclesPage.EventButtonPopUp.isDisplayed());
+
+        }catch (Exception e ){
+            e.printStackTrace();
+        }finally {
+            vehiclesPage.popUpClose.click();
+        }
+    }
+
+
+
     // ErcanAK STEP DEFINITIONS ENDS HERE
 }

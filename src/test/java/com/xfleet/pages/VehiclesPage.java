@@ -17,10 +17,16 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//a[@title='Add an event to this record']")
     public WebElement addEventButton;
 
-    public VehiclesPage() {
+    @FindBy(xpath = "//div[starts-with(@id,'ui-id')]")
+    public WebElement EventButtonPopUp;
 
-        PageFactory.initElements(Driver.get(), this);
-    }
+    @FindBy (xpath = "//div/label/em")
+    public List<WebElement> mandotarySymbol;
+
+
+    @FindBy(css = ".ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-close")
+    public WebElement popUpClose;
+
 
     // ErcanEAK project code's line ENDS here
 
