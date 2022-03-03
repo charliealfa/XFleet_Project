@@ -47,20 +47,33 @@ public class VehiclesPageStepDefs {
     // ErcanAK STEP DEFINITIONS STARTS HERE
     @When("user should click fleet modula")
     public void userShouldClickFleetModula() {
-        dashBoardPage.navigateTo("Fleet","Vehicles");
+
+        //dashBoardPage.navigateTo("Fleet","Vehicles");
     }
 
     @Then("user should select a car")
     public void userShouldSelectACar() {
 
-        vehiclesPage.waitUntilLoaderScreenDisappear();
-        vehiclesPage.anyVehicles.click();
+       // vehiclesPage.waitUntilLoaderScreenDisappear();
+        //vehiclesPage.anyVehicles.click();
     }
 
     @Then("user should display add event button")
     public void userShouldDisplayAddEventButton() {
         vehiclesPage.waitUntilLoaderScreenDisappear();
         Assert.assertTrue(vehiclesPage.addEventButton.isDisplayed());
+    }
+
+    @When("user should click under {string} {string}")
+    public void userShouldClickUnder(String Tab, String Modula) {
+       BrowserUtils.waitForPageToLoad(15);
+        dashBoardPage.navigateTo(Tab,Modula);
+    }
+
+    @Then("user should select any car or row")
+    public void userShouldSelectAnyCarOrRow() {
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        vehiclesPage.anyVehicles.click();
     }
     // ErcanAK STEP DEFINITIONS ENDS HERE
 }
