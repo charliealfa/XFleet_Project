@@ -3,7 +3,6 @@ package com.xfleet.step_definitions;
 import com.xfleet.pages.DashBoardPage;
 import com.xfleet.pages.VehiclesPage;
 import com.xfleet.utilities.BrowserUtils;
-import com.xfleet.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -43,27 +42,25 @@ public class VehiclesPageStepDefs {
         Assert.assertEquals("Verify Menu", expectedOptions, actualOptions);
     }
 
-
-
     // ESALKAN STEP DEFINITIONS ENDS HERE
 
-    //ErcanEAK Starting from here
-    @When("user should click under {string} {string}")
-    public void userShouldClickUnder(String tab, String module) {
-        dashBoardPage.waitUntilLoaderScreenDisappear();
-        dashBoardPage.navigateTo(tab,module);
+    // ErcanAK STEP DEFINITIONS STARTS HERE
+    @When("user should click fleet modula")
+    public void userShouldClickFleetModula() {
+        dashBoardPage.navigateTo("Fleet","Vehicles");
     }
 
-    @Then("user should select any car or row")
-    public void userShouldSelectAnyCarOrRow() {
-        BrowserUtils.waitForPageToLoad(15);
-        vehiclesPage.anyVehicles.click();
+    @Then("user should select a car")
+    public void userShouldSelectACar() {
 
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        vehiclesPage.anyVehicles.click();
     }
 
     @Then("user should display add event button")
     public void userShouldDisplayAddEventButton() {
-        BrowserUtils.waitForPageToLoad(15);
-        vehiclesPage.addEventButton.isDisplayed();
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        Assert.assertTrue(vehiclesPage.addEventButton.isDisplayed());
     }
+    // ErcanAK STEP DEFINITIONS ENDS HERE
 }
