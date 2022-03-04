@@ -1,17 +1,18 @@
-
+@FLTAPS-1150
 Feature: Grid
 
   Background:
     Given the "sales manager" is on home page
     And the user navigates to "Fleet" "Vehicles"
 
+  @FLTAPS-1143
   Scenario: Verify that the title Grid Settings is displayed
     When the user click the Grid button
     Then verify that the user should see Grid Settings title
 
 
-
-  Scenario: verify that Grid Settings contain certain property options
+  @FLTAPS-1144
+  Scenario: verify that Grid Settings contains certain property options
     When the user click the Grid button
     Then verify that the user should see the following Grid Settings options
       | Id                        |
@@ -36,30 +37,29 @@ Feature: Grid
       | Power (KW)                |
 
 
-
-
+  @FLTAPS-1145
   Scenario: verify that column names can be found by Quick Search box
     When the user click the Grid button
     And the user type "location" in Quick Search box
     Then verify that the search result gives "location" option
 
 
-
-  Scenario: verify that column names can be found by Quick Search box
+  @FLTAPS-1146
+  Scenario: verify that any column can be selected by clicking the column name
     When the user click the Grid button
     And the user click "Color" checkbox
     Then verify that the status of "Color" checkbox changed
 
 
-
+  @FLTAPS-1147
   Scenario: verify that order of columns can be arranged by drag and drop
     When the user click the Grid button
     And the user drag "Model Year" box to "License Plate" box
     Then verify that "Model Year" columns order changed
 
 
-
-  Scenario: verify that changes in grid settings are displayed in table structur
+  @FLTAPS-1148
+  Scenario: verify that changes in grid settings are displayed in table structure
     When the user click the Grid button
     And the user click "Chassis Number" and "Doors Number"
     * the user drag "Color" box to "Tags" box

@@ -58,7 +58,7 @@ public class GridPageStepDefs {
     @And("the user click {string} checkbox")
     public void theUserClickCheckbox(String columnName) {
         Assert.assertTrue(new GridPage().getCheckBoxElement(columnName).isSelected());
-        new GridPage().getCheckBoxElement(columnName).click();
+        new GridPage().getGridNameLabel(columnName).click();
     }
 
     @Then("verify that the status of {string} checkbox changed")
