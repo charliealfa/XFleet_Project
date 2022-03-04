@@ -8,4 +8,13 @@ public class GeneralInformationPage extends BasePage{
     @FindBy(xpath = "//h5/span")
     public WebElement generalInformationHeader;
 
+    @FindBy(xpath = "//a[@title='Edit Car']")
+    public WebElement editButton;
+
+    @FindBy(xpath = "//a[@title='Delete Car']")
+    public WebElement deleteButton;
+
+    @FindBy(xpath = "//a[@title='Add an event to this record']")
+    public WebElement addEventButton;
+
 }
