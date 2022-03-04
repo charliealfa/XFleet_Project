@@ -9,6 +9,8 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.List;
+
 public class GeneralInformationPageStepDefs {
 
     GeneralInformationPage generalInformationPage = new GeneralInformationPage();
@@ -30,9 +32,40 @@ public class GeneralInformationPageStepDefs {
 
     @Then("user should see Edit, Delete and Add Event buttons")
     public void user_should_see_Edit_Delete_and_Add_Event_buttons() {
+        BrowserUtils.waitForPageToLoad(10);
         Assert.assertTrue("Edit button is not displayed",generalInformationPage.editButton.isDisplayed());
         Assert.assertTrue("Delete button is not displayed",generalInformationPage.deleteButton.isDisplayed());
         Assert.assertTrue("Add Event button is not displayed",generalInformationPage.addEventButton.isDisplayed());
+    }
+
+    @Then("verify that information on the vehicles page are same as the information on the General Information page")
+    public void verify_that_information_on_the_vehicles_page_are_same_as_the_information_on_the_General_Information_page() {
+        BrowserUtils.waitForPageToLoad(10);
+
+        List<String> vehiclesInfo = BrowserUtils.getElementsText(vehiclesPage.anyRowInformationList);
+
+        vehiclesInfo.set(7,vehiclesInfo.get(7).replace(",",""));
+
+//        for (int i = 1; i < vehiclesPage.anyRowInformationList.size()-1; i++) {
+//            System.out.println(vehiclesInfo.get(i));
+//        }
+
+        vehiclesPage.anyRowInformationList.get(1).click();
+
+        List<String> generalInfo = BrowserUtils.getElementsText(generalInformationPage.generalInformationList);
+
+//        for (int i = 0; i < 19; i++) {
+//            System.out.println(generalInfo.get(i));
+//        }
+
+        for (int i = 0; i < 19; i++) {
+            if(generalInfo.get(i).equals("N/A")){
+                generalInfo.set(i,"");
+            }
+            Assert.assertEquals("Information is not same",vehiclesInfo.get(i+1),generalInfo.get(i));
+
+        }
+
     }
 
 }

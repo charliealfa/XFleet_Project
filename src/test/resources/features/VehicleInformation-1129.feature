@@ -29,4 +29,10 @@ Feature: Vehicle Information
       | sales manager |
       | store manager |
 
+  @FLTAPS-1175
+  Scenario: Verify that information on the vehicles page are same as the information on the General Information page
+    Given the "sales manager" is on home page
+    When navigate to "Fleet" "Vehicles" page
+    Then verify that information on the vehicles page are same as the information on the General Information page
+
 

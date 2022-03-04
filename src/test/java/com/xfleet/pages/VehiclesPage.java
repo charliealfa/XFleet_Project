@@ -20,12 +20,19 @@ public class VehiclesPage extends BasePage {
 
     // ErcanEAK project code's line ENDS here
 
+
     // Eren project code's line STARTS here
+
     @FindBy(xpath = "//a[@title='View']")
     public WebElement eyeIcon;
 
     @FindBy(xpath = "(//a[@data-toggle='dropdown'])[11]")
     public WebElement anyThreeDot;
+
+    @FindBy(xpath = "//tr[6]/td[contains(@class,'grid-cell')]")
+    public List<WebElement> anyRowInformationList;
+
+
     // Eren project code's line ENDS here
 
 
