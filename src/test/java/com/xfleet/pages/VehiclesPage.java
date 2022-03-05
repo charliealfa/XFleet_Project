@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -80,4 +81,44 @@ public class VehiclesPage extends BasePage {
 
     // esalkan project code's line ENDS here
 
+    // Erdem's codes starting
+
+    @FindBy(xpath = "//i[@class='fa-chevron-right hide-text']")
+    public WebElement nextPageButton;
+
+    @FindBy(xpath = "//label[@class='dib'][2]")
+    public WebElement textOfTotalPage;
+
+    @FindBy(xpath = "//input[@type='number']")
+    public WebElement totalPage;
+
+
+    public Integer getTotalPageNumber() {
+
+        String text = textOfTotalPage.getText();
+        String totalPageNumber = text.split(" ")[1];
+        System.out.println(totalPageNumber);
+
+        int ActualTotalPageNumber = Integer.parseInt(totalPageNumber);
+
+        return ActualTotalPageNumber;
+    }
+
+    public Integer getNumberOfCurrentPage() {
+
+        for (int i = 1; i < getTotalPageNumber(); i++) {
+            nextPageButton.click();
+            BrowserUtils.waitFor(3);
+        }
+        String pageNumberText = totalPage.getAttribute("value");
+        System.out.println("pageNumberText = " + pageNumberText);
+        int pageNumber = Integer.parseInt(pageNumberText);
+
+        return pageNumber;
+    }
 }
+
+
+// Erdem's codes finished
+
+
