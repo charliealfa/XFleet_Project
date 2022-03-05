@@ -82,5 +82,24 @@ public class LoginPage {
                 throw new RuntimeException("Unknown user type!");
         }
     }
+    public void loggedAs (String userType){
+        Driver.get().get(ConfigurationReader.get("url"));
+
+        String username ="";
+        String password ="";
+
+        if(userType.equals("driver")){
+            username = ConfigurationReader.get("driver_username");
+            password = ConfigurationReader.get("driver_password");
+        }else if(userType.equals("sales manager")){
+            username = ConfigurationReader.get("sales_manager_username");
+            password = ConfigurationReader.get("sales_manager_password");
+        }else if(userType.equals("store manager")){
+            username = ConfigurationReader.get("store_manager_username");
+            password = ConfigurationReader.get("store_manager_password");
+        }
+
+        new LoginPage().login(username,password);
+    }
 
 }
