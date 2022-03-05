@@ -32,9 +32,7 @@ public class DashBoardPageStepDefs {
         JavascriptExecutor jse = (JavascriptExecutor)Driver.get();
         jse.executeScript("window.open()");
         ArrayList<String> tabs = new ArrayList<String>(Driver.get().getWindowHandles());
-        BrowserUtils.waitFor(5);
         Driver.get().close();
-        BrowserUtils.waitFor(10);
         Driver.get().switchTo().window(tabs.get(1));
     }
 

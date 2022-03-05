@@ -36,6 +36,10 @@ public class GridPage extends BasePage {
     @FindBy(xpath = "//span[@title='Move column']/../../td[3]/input")
     public List<WebElement> gridCheckBoxList;
 
+    public WebElement getGridNameLabel(String columnName) {
+        return Driver.get().findElement(By.xpath("//label[contains(text(),'" + columnName + "')]"));
+    }
+
     public WebElement getCheckBoxElement(String columnName) {
         return Driver.get().findElement(By.xpath("//label[contains(text(),'" + columnName + "')]/../..//input"));
     }
