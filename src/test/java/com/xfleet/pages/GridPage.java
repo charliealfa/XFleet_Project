@@ -36,6 +36,24 @@ public class GridPage extends BasePage {
     @FindBy(xpath = "//span[@title='Move column']/../../td[3]/input")
     public List<WebElement> gridCheckBoxList;
 
+    @FindBy(css="[class='fa-filter hide-text']")
+    public WebElement filterIcon;
+
+    @FindBy(css="[class='add-filter-button']")
+    public WebElement manageFilterButton;
+
+    @FindBy(xpath = "//input [@type='search']")
+    public WebElement manageFilterInput;
+
+    @FindBy(xpath = "//ul[@class='ui-multiselect-checkboxes ui-helper-reset fixed-li']/li")
+    public List<WebElement> manageFilterOptions;
+
+    @FindBy(css="a[title='Reset']")
+    public WebElement resetButton;
+
+    public WebElement getRadioButton(String filterOption){
+        return Driver.get().findElement(By.cssSelector("input[title='"+filterOption+"']"));
+    }
     public WebElement getGridNameLabel(String columnName) {
         return Driver.get().findElement(By.xpath("//label[contains(text(),'" + columnName + "')]"));
     }
