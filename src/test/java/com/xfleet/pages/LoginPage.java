@@ -92,11 +92,11 @@ public class LoginPage {
             username = ConfigurationReader.get("driver_username");
             password = ConfigurationReader.get("driver_password");
         }else if(userType.equals("sales manager")){
-            username = ConfigurationReader.get("salesmanager_username");
-            password = ConfigurationReader.get("salesmanager_password");
+            username = ConfigurationReader.get("sales_manager_username");
+            password = ConfigurationReader.get("sales_manager_password");
         }else if(userType.equals("store manager")){
-            username = ConfigurationReader.get("storemanager_username");
-            password = ConfigurationReader.get("storemanager_password");
+            username = ConfigurationReader.get("store_manager_username");
+            password = ConfigurationReader.get("store_manager_password");
         }
 
         new LoginPage().login(username,password);
