@@ -4,11 +4,10 @@ Feature: Default
 		#@FLTAPS-997
 		Given the user is on the login page
 		Then the user logged with "salesmanager120" "UserUser123"
-		When user should click under "Fleet" "Vehicles"
+		When the user navigates to "Fleet" "Vehicles"
 
 	@FLTAPS-1135
 	Scenario: as a salesmanager sould add event
-
 		Then user should select any car or row
 		Then user should display add event button
 
@@ -44,5 +43,4 @@ Feature: Default
 
 		Then user should select any car or row
 		Then user can click add event button
-		And User should fill mandotary fields
 		Then if any compulsary fields empty, error message should display
