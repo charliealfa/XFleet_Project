@@ -1,5 +1,6 @@
 package com.xfleet.pages;
 
+import com.xfleet.utilities.ConfigurationReader;
 import com.xfleet.utilities.Driver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -54,6 +55,51 @@ public class LoginPage {
             }
         }
         return flag;
+    }
+
+    public void loginAsStoreManager(){
+        login(ConfigurationReader.get("store_manager_username"),ConfigurationReader.get("store_manager_password"));
+    }
+    public void loginAsSalesManager(){
+        login(ConfigurationReader.get("sales_manager_username"),ConfigurationReader.get("sales_manager_password"));
+    }
+    public void loginAsDriver(){
+        login(ConfigurationReader.get("driver_username"), ConfigurationReader.get("driver_password"));
+    }
+
+    public void loginAsUser(String userType) {
+        switch (userType.toLowerCase()){
+            case "driver":
+                loginAsDriver();
+                break;
+            case "sales manager":
+                loginAsSalesManager();
+                break;
+            case "store manager":
+                loginAsStoreManager();
+                break;
+            default:
+                throw new RuntimeException("Unknown user type!");
+        }
+    }
+    public void loggedAs (String userType){
+        Driver.get().get(ConfigurationReader.get("url"));
+
+        String username ="";
+        String password ="";
+
+        if(userType.equals("driver")){
+            username = ConfigurationReader.get("driver_username");
+            password = ConfigurationReader.get("driver_password");
+        }else if(userType.equals("sales manager")){
+            username = ConfigurationReader.get("sales_manager_username");
+            password = ConfigurationReader.get("sales_manager_password");
+        }else if(userType.equals("store manager")){
+            username = ConfigurationReader.get("store_manager_username");
+            password = ConfigurationReader.get("store_manager_password");
+        }
+
+        new LoginPage().login(username,password);
     }
 
 }
