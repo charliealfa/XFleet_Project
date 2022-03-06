@@ -3,7 +3,6 @@ package com.xfleet.step_definitions;
 import com.xfleet.pages.DashBoardPage;
 import com.xfleet.pages.VehiclesPage;
 import com.xfleet.utilities.BrowserUtils;
-import com.xfleet.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

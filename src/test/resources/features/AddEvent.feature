@@ -25,7 +25,7 @@ Feature: Default
 		Then user should display add event pop up
 
 	@FLTAPS-1159 @FLTAPS-1161
-	Scenario : mandatory fields in add Event (auto ercan)
+	Scenario: mandatory fields in add Event (auto ercan)
 
 		Then user should select any car or row
 		Then user can click add event button

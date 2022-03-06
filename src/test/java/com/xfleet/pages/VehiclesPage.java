@@ -2,6 +2,7 @@ package com.xfleet.pages;
 
 import com.xfleet.utilities.BrowserUtils;
 import com.xfleet.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -81,14 +82,14 @@ public class VehiclesPage extends BasePage {
         @FindBy(xpath = "//div[@class='pull-right grid-toolbar-tools']//a[@title='Reset']")
         public WebElement resetButton;
 
-    public List<String> getDropdownOptionsText() {
-        List<String> dropDownOptionsText = new ArrayList<>();
-        viewPerPageDropDownButton.click();
-        for (WebElement option : dropDownOptions) {
-            dropDownOptionsText.add(option.getText());
+        public List<String> getDropdownOptionsText () {
+            List<String> dropDownOptionsText = new ArrayList<>();
+            viewPerPageDropDownButton.click();
+            for (WebElement option : dropDownOptions) {
+                dropDownOptionsText.add(option.getText());
+            }
+            return dropDownOptionsText;
         }
-        return dropDownOptionsText;
-    }
 
         public boolean tableSortResult () {
             int counter = vehicleRows.size();
