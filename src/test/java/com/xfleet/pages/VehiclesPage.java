@@ -121,7 +121,9 @@ public class VehiclesPage extends BasePage {
 
 
     //burak's code begins here.....
-    @FindBy(css = "a[class^='action btn mode-icon-only'][title='Filters']")
+    @FindBy(css = "[class='fa-filter hide-text']")
+    //@FindBy(css = "a[class^='action btn mode-icon-only'][title='Filters']")
+    //
     //@FindBy(xpath = "//a[starts-with(@class,'action btn mode-icon-only')]")
     //@FindBy(linkText = "Filters")
     public WebElement filterButton;
