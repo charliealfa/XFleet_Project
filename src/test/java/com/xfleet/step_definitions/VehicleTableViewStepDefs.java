@@ -22,15 +22,48 @@ public class VehicleTableViewStepDefs {
 
     }
 
-    @Then("the user should see the total page number")
-    public void theUserShouldSeeTheTotalPageNumber() {
+    @Then("verify that user should see the total page number")
+    public void verifyThatUserShouldSeeTheTotalPageNumber() {
 
         int actualPageNumber = vehiclesPage.getTotalPageNumber();
         int expectedPageNumber = vehiclesPage.getNumberOfCurrentPage();
 
         Assert.assertEquals(expectedPageNumber,actualPageNumber);
 
+    }
 
+    @Then("verify that user should go next page clicking > button")
+    public void verifyThatUserShouldGoNextPageClickingButton() {
+
+        int currentPageNumber = vehiclesPage.getPageNumber();
+        vehiclesPage.nextPageButton.click();
+        BrowserUtils.waitFor(3);
+        int nextPageNumber = vehiclesPage.getPageNumber();
+
+
+        int expectedPageNumber = currentPageNumber+1;
+        int actualPageNumber = nextPageNumber;
+
+        Assert.assertEquals(expectedPageNumber,actualPageNumber);
+
+    }
+
+    @Then("verify that user should go previous page clicking < button")
+    public void verifyThatUserShouldGoPreviousPageClickingButton() {
+
+
+        int currentPageNumber = vehiclesPage.getPageNumber();
+
+        vehiclesPage.previousPageButton.click();
+        BrowserUtils.waitFor(3);
+        int previousPageNumber = vehiclesPage.getPageNumber();
+
+        System.out.println("currentPageNumber = " + currentPageNumber);
+        System.out.println("previousPageNumber = " + previousPageNumber);
+        int expectedPageNumber = currentPageNumber-1;
+        int actualPageNumber = previousPageNumber;
+
+        Assert.assertEquals(expectedPageNumber,actualPageNumber);
 
 
     }

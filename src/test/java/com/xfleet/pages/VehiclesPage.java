@@ -114,11 +114,14 @@ public class VehiclesPage extends BasePage {
         @FindBy(xpath = "//i[@class='fa-chevron-right hide-text']")
         public WebElement nextPageButton;
 
+        @FindBy (xpath = "//i[@class='fa-chevron-left hide-text']")
+        public WebElement previousPageButton;
+
         @FindBy(xpath = "//label[@class='dib'][2]")
         public WebElement textOfTotalPage;
 
         @FindBy(xpath = "//input[@type='number']")
-        public WebElement totalPage;
+        public WebElement pageNumber;
 
 
         public Integer getTotalPageNumber () {
@@ -127,9 +130,9 @@ public class VehiclesPage extends BasePage {
             String totalPageNumber = text.split(" ")[1];
             System.out.println(totalPageNumber);
 
-            int ActualTotalPageNumber = Integer.parseInt(totalPageNumber);
+            return Integer.parseInt(totalPageNumber);
 
-            return ActualTotalPageNumber;
+
         }
 
         public Integer getNumberOfCurrentPage () {
@@ -138,10 +141,16 @@ public class VehiclesPage extends BasePage {
                 nextPageButton.click();
                 BrowserUtils.waitFor(3);
             }
-            String pageNumberText = totalPage.getAttribute("value");
+            String pageNumberText = pageNumber.getAttribute("value");
             System.out.println("pageNumberText = " + pageNumberText);
-            int pageNumber = Integer.parseInt(pageNumberText);
-            return pageNumber;
+           return Integer.parseInt(pageNumberText);
+
+
+        }
+
+        public Integer getPageNumber(){
+
+            return  Integer.parseInt(pageNumber.getAttribute("value"));
 
         }
     }
