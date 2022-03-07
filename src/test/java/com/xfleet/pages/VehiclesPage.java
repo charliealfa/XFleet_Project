@@ -156,13 +156,13 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//a[.='not equals']")
     public WebElement lastOdometerDropDownNotEquals;
     @FindBy(xpath = "//a[.='more than']")
-    public WebElement lastOdometerDropDownMoreThen;
+    public WebElement lastOdometerDropDownMoreThan;
     @FindBy(xpath = "//a[.='less than']")
-    public WebElement lastOdometerDropDownLessThen;
+    public WebElement lastOdometerDropDownLessThan;
     @FindBy(xpath = "//a[.='equals or more than']")
-    public WebElement lastOdometerDropDownEqualsOrMoreThen;
+    public WebElement lastOdometerDropDownEqualsOrMoreThan;
     @FindBy(xpath = "//a[.='equals or less than']")
-    public WebElement lastOdometerDropDownEqualsOrLessThen;
+    public WebElement lastOdometerDropDownEqualsOrLessThan;
     @FindBy(xpath = "//a[.='is empty']")
     public WebElement lastOdometerDropDownIsEmpty;
     @FindBy(xpath = "//a[.='is not empty']")
@@ -173,6 +173,10 @@ public class VehiclesPage extends BasePage {
     public WebElement lastOdometerLowRange;
     @FindBy(css = "input[name='value_end']")
     public WebElement lastOdometerTopRange;
+
+    //last Odometer searching results
+    @FindBy(css = "td[data-column-label='Last Odometer']")
+    public WebElement lastOdometerResults;
 
     //Update button for low and top input search
     @FindBy(css = "button[class='btn btn-primary filter-update']")
