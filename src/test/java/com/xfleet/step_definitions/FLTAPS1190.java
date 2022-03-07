@@ -21,12 +21,10 @@ public class FLTAPS1190 {
 
     //When user clicks "Contains" drop down menu
     @When("user clicks {string} drop down menu button")
-    public void user_clicks_drop_down_menu_button(String containsDropDownMenu) {
+    public void user_clicks_drop_down_menu(String containsDropDownMenu) {
         BrowserUtils.waitFor(6);
         Driver.get().findElement(By.xpath("(//button[@class='btn dropdown-toggle'])")).click();
     }
-
-
 
 
     //Then list of methods should be displayed

@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt"},
         features = "src/test/resources/features",
         glue = "com/xfleet/step_definitions",
-        dryRun = false,
-        tags = "@o"
+        dryRun = true,
+        tags = "@FLTAPS-1191"
 
 )
 public class CukesRunner {
