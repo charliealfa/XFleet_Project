@@ -3,12 +3,11 @@ package com.xfleet.step_definitions;
 import com.xfleet.pages.DashBoardPage;
 import com.xfleet.pages.VehiclesPage;
 import com.xfleet.utilities.BrowserUtils;
-import com.xfleet.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +17,7 @@ public class VehiclesPageStepDefs {
 
     DashBoardPage dashBoardPage = new DashBoardPage();
     VehiclesPage vehiclesPage = new VehiclesPage();
+
 
     // ESALKAN STEP DEFINITIONS STARTS HERE
     @And("user navigate to the {string} {string} page")
@@ -84,6 +84,46 @@ public class VehiclesPageStepDefs {
         vehiclesPage.waitUntilLoaderScreenDisappear();
         Assert.assertTrue(vehiclesPage.addEventButton.isDisplayed());
     }
+    @Then("user should select any car or row")
+    public void userShouldSelectAnyCarOrRow() {
+        vehiclesPage.anyVehicles.click();
+    }
 
+    @Then("user can click add event button")
+    public void userCanClickAddEventButton() {
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitForClickablility(vehiclesPage.addEventButton,15);
+            vehiclesPage.addEventButton.click();
+
+    }
+
+    @Then("user should display add event pop up")
+    public void userShouldDisplayAddEventPopUp() {
+
+        try {
+            Assert.assertTrue(vehiclesPage.AddEventpopUp.isDisplayed());
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            vehiclesPage.getAddEventpopUpCancel.click();
+        }
+
+    }
+
+    @Then("if any compulsary fields empty, error message should display")
+    public void ifAnyCompulsaryFieldsEmptyErrorMessageShouldDisplay() {
+
+        vehiclesPage.addEventButton.click();
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        vehiclesPage.addEventButtonSaveButton.click();
+        Assert.assertTrue(vehiclesPage.ErrorMsgOfAddEvent.isDisplayed());
+
+    }
+
+    @And("mandatory fields should display with * symbol")
+    public void mandatoryFieldsShouldDisplayWithSymbol(List<String> expectedTitles) {
+        BrowserUtils.waitForVisibility(vehiclesPage.addEventPopUpInptLabels.get(1),15);
+        vehiclesPage.checkMandatoryItems(expectedTitles);
+    }
     // ErcanAK STEP DEFINITIONS ENDS HERE
 }
