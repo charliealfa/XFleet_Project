@@ -1,10 +1,9 @@
+@lom
 Feature: Vehicle - Filters - Last Odometer filter menu
 
 	#1- User can select "Last Odometer" filter under 'Fleet-Vehicles' page{color}
 
 	@FLTAPS-1169 @FLTAPS-1189
-
-
 	Scenario: Vehicles_Filter_Last Odometer_selecting
 		    Given the user is on the login page
 		    And the user logged with "user1" "UserUser123"
@@ -78,7 +77,7 @@ Feature: Vehicle - Filters - Last Odometer filter menu
 
 	#{color:#FF0000}7- When user selects "Is Empty" method, only empty values should be displayed.{color}
 
-	@FLTAPS-1173 @FLTAPS-1189 @lom
+	@FLTAPS-1173 @FLTAPS-1189
 		Scenario: Last Odometer Methods Range -- Is Empty
 		    Given the user is on the login page
 		    And the user logged with "user1" "UserUser123"
@@ -89,45 +88,3 @@ Feature: Vehicle - Filters - Last Odometer filter menu
 		    And user clicks the Last Odometer:All button
 		    And user clicks the method drop down button
 		    And user selects Is Empty method on drop down
-
-
-
-	#8- Methods ("Between","Equals","More Than","Less Than") shouldn't accept non-numeric values
-	@FLTAPS-1192 @FLTAPS-1189
-		Scenario Outline: Last Odometer Methods Range -- Between Non-Valid
-		    Given the user is on the login page
-		    And the user logged with "user1" "UserUser123"
-		    When the user navigates to Fleet, Vehicles
-		    When user clicks the Filter button
-		    And user clicks the Manage filters button
-		    When user clicks the Last Odometer button
-		    And user clicks the Last Odometer:All button
-		    And user clicks the method drop down button
-		    And user selects "<methods>" method and enters "<low range>" and "<top range>"
-		    Examples:
-		      | methods     | low range | top range  |
-		      | Between     | &%^       | £$         |
-		      | Not Between | &%^       | £$         |	
-
-
-	#8- Methods ("Between","Equals","More Than","Less Than") shouldn't accept non-numeric values
-	@FLTAPS-1193 @FLTAPS-1189
-		Scenario Outline: Last Odometer Methods Range -- Equals
-		    Given the user is on the login page
-		    And the user logged with "user1" "UserUser123"
-		    When the user navigates to Fleet, Vehicles
-		    When user clicks the Filter button
-		    And user clicks the Manage filters button
-		    When user clicks the Last Odometer button
-		    And user clicks the Last Odometer:All button
-		    And user clicks the method drop down button
-		    And user selects "<methods>" method on drop down
-		    And user enter "<x>"
-		    Examples:
-		      | methods             | x   |
-		      | Equals              | &%^ |
-		      | Not Equals          | &%^ |
-		      | More Than           | &%^ |
-		      | Less Than           | &%^ |
-		      | Equals or More Than | &%^ |
-		      | Equals or Less Than | &%^ |

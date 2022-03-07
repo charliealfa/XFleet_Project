@@ -16,12 +16,12 @@ import java.util.List;
 
 public class FilterLastOdometer {
 
-    VehiclesPage vehiclesPage=new VehiclesPage();
-    DashBoardPage dashBoardPage=new DashBoardPage();
+    VehiclesPage vehiclesPage = new VehiclesPage();
+    DashBoardPage dashBoardPage = new DashBoardPage();
 
     @When("the user navigates to Fleet, Vehicles")
     public void the_user_navigates_to_Fleet_Vehicles() {
-        dashBoardPage.navigateTo("Fleet","Vehicles");
+        dashBoardPage.navigateTo("Fleet", "Vehicles");
     }
 
 
@@ -32,6 +32,7 @@ public class FilterLastOdometer {
         BrowserUtils.waitForClickablility(vehiclesPage.filterButton, 5).click();
         //action.moveToElement(vehiclesPage.filterButton).click().perform();
     }
+
     @When("user clicks the Manage filters button")
     public void user_clicks_the_Manage_filters_button() {
         // Thread.sleep(10000);
@@ -40,10 +41,12 @@ public class FilterLastOdometer {
         BrowserUtils.waitForClickablility(vehiclesPage.manageFiltersButton, 5).click();
 
     }
+
     @When("user clicks the Last Odometer button")
     public void user_clicks_the_Last_Odometer_button() {
         BrowserUtils.waitForClickablility(vehiclesPage.lastOdometerCheckBox, 5).click();
     }
+
     @Then("users should see the Last Odometer:All dropbox")
     public void users_should_see_the_Last_Odometer_All_dropbox() {
         Assert.assertTrue(vehiclesPage.lastOdometerDropOpener.isDisplayed());
@@ -57,16 +60,16 @@ public class FilterLastOdometer {
     }
 
 
-
     @When("user clicks the method drop down button")
     public void user_clicks_the_method_drop_down_button() {
         vehiclesPage.lastOdometerDropDownToggle.click();
 
     }
+
     @Then("users should see the following list")
     public void users_should_see_the_following_list(io.cucumber.datatable.DataTable dataTable) {
 
-        List<String> expectedLOMethodsOptions =new ArrayList<>();
+        List<String> expectedLOMethodsOptions = new ArrayList<>();
         expectedLOMethodsOptions.add("Between");
         expectedLOMethodsOptions.add("Not Between");
         expectedLOMethodsOptions.add("Equals");
@@ -92,7 +95,7 @@ public class FilterLastOdometer {
         actualLOMethodsOptions.add(vehiclesPage.lastOdometerDropDownIsNotEmpty.getText());
 
 
-        Assert.assertEquals(actualLOMethodsOptions,expectedLOMethodsOptions);
+        Assert.assertEquals(actualLOMethodsOptions, expectedLOMethodsOptions);
 
     }
 
@@ -103,25 +106,25 @@ public class FilterLastOdometer {
         vehiclesPage.lastOdometerDropDownBetween.click();
         vehiclesPage.lastOdometerLowRange.sendKeys(string2);
         vehiclesPage.lastOdometerTopRange.sendKeys(string3);
-       // Thread.sleep(5000);
+        // Thread.sleep(5000);
         vehiclesPage.lastOdometerUpdateButton.click();
         Thread.sleep(3000);
-        BrowserUtils.waitForPresenceOfElement(By.cssSelector("td[data-column-label='Last Odometer']"),10);
+        BrowserUtils.waitForPresenceOfElement(By.cssSelector("td[data-column-label='Last Odometer']"), 10);
 
-        int lowRange=Integer.parseInt(string2);
-        int topRange=Integer.parseInt(string3);
-        String actualRangeString=vehiclesPage.lastOdometerResults.getText();
-       // System.out.println("actualRangeString = " + actualRangeString);
+        int lowRange = Integer.parseInt(string2);
+        int topRange = Integer.parseInt(string3);
+        String actualRangeString = vehiclesPage.lastOdometerResults.getText();
+        // System.out.println("actualRangeString = " + actualRangeString);
 
-        actualRangeString=actualRangeString.replace("," , "");
+        actualRangeString = actualRangeString.replace(",", "");
         //System.out.println("actualRangeString = " + actualRangeString);
 
 
-        int actualRange=Integer.parseInt(actualRangeString);
+        int actualRange = Integer.parseInt(actualRangeString);
 
-        if(actualRange>=lowRange && actualRange<=topRange){
+        if (actualRange >= lowRange && actualRange <= topRange) {
             Assert.assertTrue(true);
-        }else{
+        } else {
             Assert.fail();
         }
 
@@ -142,21 +145,21 @@ public class FilterLastOdometer {
         vehiclesPage.lastOdometerLowRange.sendKeys(arg0);
         vehiclesPage.lastOdometerUpdateButton.click();
         Thread.sleep(3000);
-        BrowserUtils.waitForPresenceOfElement(By.cssSelector("td[data-column-label='Last Odometer']"),10);
-        int lowRange=Integer.parseInt(arg0);
+        BrowserUtils.waitForPresenceOfElement(By.cssSelector("td[data-column-label='Last Odometer']"), 10);
+        int lowRange = Integer.parseInt(arg0);
 
-        String actualRangeString=vehiclesPage.lastOdometerResults.getText();
+        String actualRangeString = vehiclesPage.lastOdometerResults.getText();
         // System.out.println("actualRangeString = " + actualRangeString);
 
-        actualRangeString=actualRangeString.replace("," , "");
+        actualRangeString = actualRangeString.replace(",", "");
         //System.out.println("actualRangeString = " + actualRangeString);
 
 
-        int actualRange=Integer.parseInt(actualRangeString);
+        int actualRange = Integer.parseInt(actualRangeString);
 
-        if(actualRange==lowRange){
+        if (actualRange == lowRange) {
             Assert.assertTrue(true);
-        }else{
+        } else {
             Assert.fail();
         }
     }
@@ -165,16 +168,13 @@ public class FilterLastOdometer {
     public void userSelectsIsEmptyMethodOnDropDown() {
         vehiclesPage.lastOdometerDropDownIsEmpty.click();
 
-        if(vehiclesPage.lastOdometerDropDownIsEmpty.getText().equals("")){
+        if (vehiclesPage.lastOdometerDropDownIsEmpty.getText().equals("")) {
             Assert.assertTrue(true);
-        }else{
+        } else {
             Assert.fail();
         }
 
     }
-
-
-
 
 
 }
