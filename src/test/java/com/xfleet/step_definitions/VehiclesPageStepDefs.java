@@ -125,5 +125,18 @@ public class VehiclesPageStepDefs {
         BrowserUtils.waitForVisibility(vehiclesPage.addEventPopUpInptLabels.get(1),15);
         vehiclesPage.checkMandatoryItems(expectedTitles);
     }
+
     // ErcanAK STEP DEFINITIONS ENDS HERE
+
+    //HUSEYIN'S STEP DEFINITIONS STARTS HERE
+
+
+    @Then("user can select event color")
+    public void userCanSelectEventColor() {
+        vehiclesPage.popUpColorSelect.click();
+    }
+
+
+    //HUSEYIN'S STEP DEFINITIONS ENDS HERE
+
 }
