@@ -44,19 +44,20 @@ public class GeneralInformationPageStepDefs {
 
         List<String> vehiclesInfo = BrowserUtils.getElementsText(vehiclesPage.anyRowInformationList);
 
-        vehiclesInfo.set(7,vehiclesInfo.get(7).replace(",",""));
 
-//        for (int i = 1; i < vehiclesPage.anyRowInformationList.size()-1; i++) {
+        for (int i = 1; i < vehiclesPage.anyRowInformationList.size()-1; i++) {
 //            System.out.println(vehiclesInfo.get(i));
-//        }
+            vehiclesInfo.set(i,vehiclesInfo.get(i).replace(",",""));
+        }
 
         vehiclesPage.anyRowInformationList.get(1).click();
 
         List<String> generalInfo = BrowserUtils.getElementsText(generalInformationPage.generalInformationList);
 
-//        for (int i = 0; i < 19; i++) {
+        for (int i = 0; i < 19; i++) {
 //            System.out.println(generalInfo.get(i));
-//        }
+            generalInfo.set(i,generalInfo.get(i).replace(",",""));
+        }
 
         for (int i = 0; i < 19; i++) {
             if(generalInfo.get(i).equals("N/A")){
