@@ -1,6 +1,7 @@
+@wip
 Feature: As a user, I should be able to see all vehicle information in a table under Fleet-Vehicle page
 
-
+  @FLTAPS-1195
   Scenario Outline: All user types can see all vehicle information under 'Fleet-Vehicles' module
 
     Given the user is on the login page
@@ -32,7 +33,7 @@ Feature: As a user, I should be able to see all vehicle information in a table u
       | salesmanager127 | UserUser123 |
       | storemanager100 | UserUser123 |
 
-
+  @FLTAPS-1196
   Scenario Outline:  User can see the total page number
     Given the user is on the login page
     When the user logged with "<username>" "<password>"
@@ -45,7 +46,7 @@ Feature: As a user, I should be able to see all vehicle information in a table u
       | storemanager100 | UserUser123 |
 
 
-
+  @FLTAPS-1197
   Scenario Outline: User can go to next page clicking ">" button and can go to previous page clicking "<" button
     Given the user is on the login page
     When the user logged with "<username>" "<password>"
@@ -60,8 +61,8 @@ Feature: As a user, I should be able to see all vehicle information in a table u
       | salesmanager127 | UserUser123 |
       | storemanager100 | UserUser123 |
 
-
-    Scenario Outline: User can see total recordings of vehicles
+@FLTAPS-1198
+  Scenario Outline: User can see total recordings of vehicles
     Given the user is on the login page
     When the user logged with "<username>" "<password>"
     And the user navigates to "Fleet" "Vehicles"
@@ -72,7 +73,7 @@ Feature: As a user, I should be able to see all vehicle information in a table u
       | salesmanager127 | UserUser123 |
       | storemanager100 | UserUser123 |
 
-  @wip
+@FLTAPS-1199
   Scenario Outline: User can download table data in XLS or CSV format
     Given the user is on the login page
     When the user logged with "<username>" "<password>"

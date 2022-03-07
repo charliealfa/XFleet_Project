@@ -146,8 +146,6 @@ public class VehiclesPage extends BasePage {
         System.out.println(totalPageNumber);
 
         return Integer.parseInt(totalPageNumber);
-
-
     }
 
     public Integer getNumberOfCurrentPage() {
@@ -163,9 +161,7 @@ public class VehiclesPage extends BasePage {
     }
 
     public Integer getPageNumber() {
-
         return Integer.parseInt(pageNumber.getAttribute("value"));
-
     }
 
     public Boolean verificationMessageCSVIsDisplayed() {
