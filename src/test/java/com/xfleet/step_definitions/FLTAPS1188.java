@@ -11,7 +11,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 
 //Driver Filter
-public class FLTAPS1188_SD {
+public class FLTAPS1188 {
 
     LoginPage loginPage = new LoginPage();
 
@@ -56,4 +56,5 @@ public class FLTAPS1188_SD {
         System.out.println("driver is clicked");
         BrowserUtils.waitFor(6);
     }
+
 }
