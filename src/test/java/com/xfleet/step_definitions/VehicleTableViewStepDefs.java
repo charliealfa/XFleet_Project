@@ -5,6 +5,7 @@ import com.xfleet.pages.VehiclesPage;
 import com.xfleet.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
@@ -65,6 +66,22 @@ public class VehicleTableViewStepDefs {
 
         Assert.assertEquals(expectedPageNumber,actualPageNumber);
 
+
+    }
+
+    @Then("verify that total recording of vehicles")
+    public void verifyThatTotalRecordingOfVehicles() {
+        vehiclesPage.viewPerPageDropDownButton.click();
+        List<WebElement> dropDownOptions = vehiclesPage.dropDownOptions;
+        dropDownOptions.get(3).click();
+        BrowserUtils.waitFor(3);
+
+        String number = vehiclesPage.fullText.getText().split(" ")[2];
+
+        int actualRecordNumber= Integer.parseInt(number);
+        int expectedRecordNumber = vehiclesPage.vehicleRows.size();
+
+        Assert.assertEquals(expectedRecordNumber,actualRecordNumber);
 
     }
 }

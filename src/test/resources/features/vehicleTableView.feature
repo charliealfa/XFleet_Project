@@ -45,7 +45,7 @@ Feature: As a user, I should be able to see all vehicle information in a table u
       | storemanager100 | UserUser123 |
 
 
-  @wip
+
   Scenario Outline: User can go to next page clicking ">" button and can go to previous page clicking "<" button
     Given the user is on the login page
     When the user logged with "<username>" "<password>"
@@ -54,6 +54,18 @@ Feature: As a user, I should be able to see all vehicle information in a table u
     Then verify that user should go previous page clicking < button
 
 
+    Examples:
+      | username        | password    |
+      | user10          | UserUser123 |
+      | salesmanager127 | UserUser123 |
+      | storemanager100 | UserUser123 |
+
+  @wip
+    Scenario Outline: User can see total recordings of vehicles
+    Given the user is on the login page
+    When the user logged with "<username>" "<password>"
+    And the user navigates to "Fleet" "Vehicles"
+    Then verify that total recording of vehicles
     Examples:
       | username        | password    |
       | user10          | UserUser123 |

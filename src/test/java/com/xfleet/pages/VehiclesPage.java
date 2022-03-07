@@ -123,6 +123,10 @@ public class VehiclesPage extends BasePage {
         @FindBy(xpath = "//input[@type='number']")
         public WebElement pageNumber;
 
+        @FindBy (xpath = "//label[@class='dib'][3]")
+        public WebElement fullText;
+
+
 
         public Integer getTotalPageNumber () {
 
@@ -145,7 +149,6 @@ public class VehiclesPage extends BasePage {
             System.out.println("pageNumberText = " + pageNumberText);
            return Integer.parseInt(pageNumberText);
 
-
         }
 
         public Integer getPageNumber(){
@@ -153,6 +156,8 @@ public class VehiclesPage extends BasePage {
             return  Integer.parseInt(pageNumber.getAttribute("value"));
 
         }
+
+    //tbody/tr
     }
 
 // Erdem's codes finished
