@@ -19,6 +19,7 @@ public class DashBoardPage extends BasePage {
         PageFactory.initElements(Driver.get(),this);
     }
     Actions action = new Actions(Driver.get());
+
     public void navigateTo(String tab, String module) {
         waitUntilLoaderScreenDisappear();
         action.moveToElement(Driver.get().findElement(By.linkText(tab))).perform();
