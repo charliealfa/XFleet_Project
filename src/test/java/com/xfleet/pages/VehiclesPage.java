@@ -51,7 +51,7 @@ public class VehiclesPage extends BasePage {
 
 
     // Eren project code's line STARTS here
-
+  
     @FindBy(xpath = "//a[@title='View']")
     public WebElement eyeIcon;
 
@@ -60,8 +60,7 @@ public class VehiclesPage extends BasePage {
 
     @FindBy(xpath = "//tr[6]/td[contains(@class,'grid-cell')]")
     public List<WebElement> anyRowInformationList;
-
-
+  
     // Eren project code's line ENDS heredf
 
 
@@ -140,16 +139,13 @@ public class VehiclesPage extends BasePage {
 
 
     public Integer getTotalPageNumber() {
-
         String text = textOfTotalPage.getText();
         String totalPageNumber = text.split(" ")[1];
         System.out.println(totalPageNumber);
-
         return Integer.parseInt(totalPageNumber);
     }
 
     public Integer getNumberOfCurrentPage() {
-
         for (int i = 1; i < getTotalPageNumber(); i++) {
             nextPageButton.click();
             BrowserUtils.waitFor(3);
@@ -157,15 +153,13 @@ public class VehiclesPage extends BasePage {
         String pageNumberText = pageNumber.getAttribute("value");
         System.out.println("pageNumberText = " + pageNumberText);
         return Integer.parseInt(pageNumberText);
-
     }
-
-    public Integer getPageNumber() {
+  
+      public Integer getPageNumber() {
         return Integer.parseInt(pageNumber.getAttribute("value"));
     }
 
     public Boolean verificationMessageCSVIsDisplayed() {
-
         exportGridButton.click();
         csvFormat.click();
         BrowserUtils.waitFor(3);
@@ -182,9 +176,81 @@ public class VehiclesPage extends BasePage {
 
     // Erdem's codes finished
 
+    //burak's code begins here.....
+  
+    @FindBy(css = "[class='fa-filter hide-text']")
+    //@FindBy(css = "a[class^='action btn mode-icon-only'][title='Filters']")
+
+    //@FindBy(xpath = "//a[starts-with(@class,'action btn mode-icon-only')]")
+    //@FindBy(linkText = "Filters")
+    public WebElement filterButton;
+
+    @FindBy(css = "a[class^='add-filter-button']")
+    public WebElement manageFiltersButton;
+
+    @FindBy(css = "input[id='ui-multiselect-0-0-option-6']")
+    public WebElement lastOdometerCheckBox;
+
+    @FindBy(xpath = "//div[contains(text(),'Last Odometer')]")
+    public WebElement lastOdometerDropOpener;
+
+    @FindBy(css = "button[class='btn dropdown-toggle']")
+    public WebElement lastOdometerDropDownToggle;
+
+    //All the methods on drop down menu.
+    @FindBy(css = "a[class='dropdown-item choice-value']")
+    public WebElement lastOdometerDropDownMenu;
+
+    //Last odometer drop down toggles options/methods
+    //xpath locaters for containing texts
+
+    @FindBy(xpath = "//a[.='between']")
+    public WebElement lastOdometerDropDownBetween;
+  
+    @FindBy(xpath = "//a[.='not between']")
+    public WebElement lastOdometerDropDownNotBetween;
+  
+    @FindBy(xpath = "//a[.='equals']")
+    public WebElement lastOdometerDropDownEquals;
+  
+    @FindBy(xpath = "//a[.='not equals']")
+    public WebElement lastOdometerDropDownNotEquals;
+  
+    @FindBy(xpath = "//a[.='more than']")
+    public WebElement lastOdometerDropDownMoreThan;
+  
+    @FindBy(xpath = "//a[.='less than']")
+    public WebElement lastOdometerDropDownLessThan;
+  
+    @FindBy(xpath = "//a[.='equals or more than']")
+    public WebElement lastOdometerDropDownEqualsOrMoreThan;
+  
+    @FindBy(xpath = "//a[.='equals or less than']")
+    public WebElement lastOdometerDropDownEqualsOrLessThan;
+  
+    @FindBy(xpath = "//a[.='is empty']")
+    public WebElement lastOdometerDropDownIsEmpty;
+  
+    @FindBy(xpath = "//a[.='is not empty']")
+    public WebElement lastOdometerDropDownIsNotEmpty;
+
+    //input boxes low and top values for the search range
+    @FindBy(css = "input[name='value']")
+    public WebElement lastOdometerLowRange;
+  
+    @FindBy(css = "input[name='value_end']")
+    public WebElement lastOdometerTopRange;
+
+    //last Odometer searching results
+    @FindBy(css = "td[data-column-label='Last Odometer']")
+    public WebElement lastOdometerResults;
+
+    //Update button for low and top input search
+    @FindBy(css = "button[class='btn btn-primary filter-update']")
+    public WebElement lastOdometerUpdateButton;
+
+    //for verify actual result. Locator show us a list of actual results.
+    @FindBy(css = " td[class='number-cell grid-cell grid-body-cell grid-body-cell-LastOdometer']")
+    public WebElement lastOdometerActualResult;
 
 }
-
-
-
-
