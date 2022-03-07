@@ -15,5 +15,5 @@ import org.junit.runner.RunWith;
         tags = "@first"
 
 )
-public class CukesRunner {
+class CukesRunner {
 }
