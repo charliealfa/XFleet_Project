@@ -60,7 +60,7 @@ Feature: As a user, I should be able to see all vehicle information in a table u
       | salesmanager127 | UserUser123 |
       | storemanager100 | UserUser123 |
 
-  @wip
+
     Scenario Outline: User can see total recordings of vehicles
     Given the user is on the login page
     When the user logged with "<username>" "<password>"
@@ -71,3 +71,18 @@ Feature: As a user, I should be able to see all vehicle information in a table u
       | user10          | UserUser123 |
       | salesmanager127 | UserUser123 |
       | storemanager100 | UserUser123 |
+
+  @wip
+  Scenario Outline: User can download table data in XLS or CSV format
+    Given the user is on the login page
+    When the user logged with "<username>" "<password>"
+    And the user navigates to "Fleet" "Vehicles"
+    Then verify that user should download table data in XLS or CSV format
+
+
+    Examples:
+      | username        | password    |
+      | user10          | UserUser123 |
+      | salesmanager127 | UserUser123 |
+      | storemanager100 | UserUser123 |
+

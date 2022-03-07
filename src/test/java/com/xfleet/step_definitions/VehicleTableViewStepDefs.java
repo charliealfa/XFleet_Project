@@ -84,4 +84,14 @@ public class VehicleTableViewStepDefs {
         Assert.assertEquals(expectedRecordNumber,actualRecordNumber);
 
     }
+
+    @Then("verify that user should download table data in XLS or CSV format")
+    public void verifyThatUserShouldDownloadTableDataInXLSOrCSVFormat() {
+
+        Assert.assertTrue(vehiclesPage.verificationMessageCSVIsDisplayed());
+        Assert.assertTrue(vehiclesPage.verificationMessageXLSXIsDisplayed());
+
+
+
+    }
 }
