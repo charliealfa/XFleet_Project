@@ -51,7 +51,7 @@ Feature: Grid
     Then verify that the status of "Color" checkbox changed
 
 
-  @FLTAPS-1147
+  @FLTAPS-1147 @wip
   Scenario: verify that order of columns can be arranged by drag and drop
     When the user click the Grid button
     And the user drag "Model Year" box to "License Plate" box

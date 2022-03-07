@@ -29,6 +29,7 @@ public abstract class BasePage {
     @FindBy(linkText = "My User")
     public WebElement myUser;
 
+
     public BasePage() {
         PageFactory.initElements(Driver.get(), this);
     }
@@ -109,6 +110,34 @@ public abstract class BasePage {
         } catch (Exception e) {
             BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)),  5);
 
+        }
+    }
+
+    @FindBy(css = ".open > .dropdown-toggle")
+    public WebElement openDropdownToggle;
+
+    public void actionWithRowNo(int rowNo, String typeOfAction) {
+        // String rowNoLocator = "//ul[@class='dropdown-menu dropdown-menu__action-cell launchers-dropdown-menu']["+rowNo+"]";
+        String rowNoLocator = "(//table//a[@class='dropdown-toggle'])["+rowNo+"]";
+        String typeOfActionLocator = "(//li[@class='launcher-item']/a[@title='"+typeOfAction+"'])[last()]";
+
+
+
+        try {
+            BrowserUtils.waitForClickablility(By.xpath(rowNoLocator), 10);
+            WebElement tabElement = Driver.get().findElement(By.xpath(rowNoLocator));
+            new Actions(Driver.get()).moveToElement(tabElement).pause(200).doubleClick(openDropdownToggle).build().perform();
+        } catch (Exception e) {
+            BrowserUtils.clickWithWait(By.xpath(rowNoLocator), 10);
+        }
+        try {
+            BrowserUtils.waitForPresenceOfElement(By.xpath(typeOfActionLocator), 10);
+            BrowserUtils.waitForVisibility(By.xpath(typeOfActionLocator), 10);
+            BrowserUtils.scrollToElement(Driver.get().findElement(By.xpath(typeOfActionLocator)));
+            Driver.get().findElement(By.xpath(typeOfActionLocator)).click();
+        } catch (Exception e) {
+            //       BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(typeOfActionLocator)));
+            BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(typeOfActionLocator)),  10);
         }
     }
 
