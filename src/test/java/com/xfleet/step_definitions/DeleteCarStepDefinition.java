@@ -17,6 +17,8 @@ public class DeleteCarStepDefinition {
     VehiclesPage vehiclePage = new VehiclesPage();
     Actions actions = new Actions(Driver.get());
     Random random = new Random();
+    int totalNum;
+    int totalNum2;
 
     @When("the user clicks Fleet,Vehicles module")
     public void the_user_clicks_Fleet_Vehicles_module() {
@@ -92,14 +94,27 @@ public class DeleteCarStepDefinition {
 
     @When("the user deleted any car")
     public void the_user_deleted_any_car() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        BrowserUtils.waitFor(3);
+        String totalNumStr = vehiclePage.totalCarNumber.getText();
+        String[] split = totalNumStr.split(" ");
+        totalNum = Integer.parseInt(split[2]);
+        BrowserUtils.waitFor(3);
+        actions.moveToElement(vehiclePage.anyThreeDot).perform();
+        BrowserUtils.waitFor(3);
+        vehiclePage.deleteIcon.click();
+        BrowserUtils.waitFor(2);
+        vehiclePage.deleteMessageYesBtn.click();
+        BrowserUtils.waitFor(2);
+        String totalNumStr2 = vehiclePage.totalCarNumber.getText();
+        String[] split2 = totalNumStr2.split(" ");
+        totalNum2 = Integer.parseInt(split2[2]);
     }
 
     @Then("the user car should be deleted")
     public void the_user_car_should_be_deleted() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertTrue(totalNum-1==totalNum2);
+
+        vehiclePage.logOut();
     }
 
 }

@@ -77,7 +77,7 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//*[contains(text(),'Yes, Delete')]")
     public WebElement deleteMessageYesBtn;
 
-    @FindBy(xpath = "//*[contains(text(),'Total of 79 records')]")
+    @FindBy(xpath = "//*[contains(text(),'Total of')]")
     public WebElement totalCarNumber;
 
     @FindBy(xpath = "//*[contains(text(),'Item deleted')]")

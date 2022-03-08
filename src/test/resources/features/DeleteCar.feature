@@ -76,10 +76,12 @@ Feature: Default
 	Scenario: Deleted car should be removed
 		Given the user is on the login page
 		When the user logged with "storemanager85" "UserUser123"
+		And the user clicks Fleet,Vehicles module
 		And the user deleted any car
 		Then the user car should be deleted
 		
 		Given the user is on the login page
 		When the user logged with "salesmanager120" "UserUser123"
+		And the user clicks Fleet,Vehicles module
 		And the user deleted any car
 		Then the user car should be deleted
