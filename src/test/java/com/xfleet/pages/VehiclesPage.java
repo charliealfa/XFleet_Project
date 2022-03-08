@@ -92,19 +92,30 @@ public class VehiclesPage extends BasePage {
     }
 
     public boolean tableSortResult() {
-        int counter = vehicleRows.size();
-        List<String> beforeSortRowCellData = new ArrayList<>();
-        for (int i = 1; i <= counter; i++) {
-            beforeSortRowCellData.add(Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]/td[7]")).getText());
-        }
+        boolean flag = false;
+        int beforeSortLicensePlate = Driver.get().findElement(By.xpath("//table/tbody/tr[1]/td[2]")).getText().charAt(0);
         modelYearTab.click();
         BrowserUtils.waitFor(2);
-        int sortCounter = vehicleRows.size();
-        List<String> afterSortRowCellData = new ArrayList<>();
-        for (int i = 1; i <= sortCounter; i++) {
-            afterSortRowCellData.add(Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]/td[7]")).getText());
+        modelYearTab.click();
+        BrowserUtils.waitFor(2);
+        modelYearTab.click();
+        int afterSortLicensePlage = Driver.get().findElement(By.xpath("//table/tbody/tr[1]/td[2]")).getText().charAt(0);
+        if (afterSortLicensePlage > beforeSortLicensePlate){
+            flag = true;
         }
-        return Objects.equals(beforeSortRowCellData.get(24), afterSortRowCellData.get(24));
+        return flag;
+    }
+
+    public boolean tableSortReset() {
+        boolean flag = false;
+        String beforeSortLicensePlate = Driver.get().findElement(By.xpath("//table/tbody/tr[1]/td[2]")).getText();
+        resetButton.click();
+        BrowserUtils.waitFor(2);
+        String afterResetFirstLicensePlage = Driver.get().findElement(By.xpath("//table/tbody/tr[1]/td[2]")).getText();
+        if (beforeSortLicensePlate.equals(afterResetFirstLicensePlage)){
+            flag = true;
+        }
+        return flag;
     }
 
     // esalkan project code's line ENDS here

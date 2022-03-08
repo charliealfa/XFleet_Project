@@ -51,16 +51,13 @@ public class VehiclesPageStepDefs {
 
     @And("user click on a tab for sorting records")
     public void user_click_on_a_tab_for_sorting_records() {
-        Assert.assertFalse(vehiclesPage.tableSortResult());
+        Assert.assertTrue(vehiclesPage.tableSortResult());
     }
 
     @Then("user click on the reset button")
     public void user_click_on_the_reset_button(){
         BrowserUtils.waitForPageToLoad(10);
-        vehiclesPage.resetButton.click();
-        BrowserUtils.waitForPageToLoad(10);
-        BrowserUtils.waitFor(5);
-        Assert.assertFalse(vehiclesPage.tableSortResult());
+        Assert.assertFalse(vehiclesPage.tableSortReset());
     }
 
 
