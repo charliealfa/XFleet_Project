@@ -58,7 +58,7 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "(//a[@data-toggle='dropdown'])[11]")
     public WebElement anyThreeDot;
 
-    @FindBy(xpath = "//tr[6]/td[contains(@class,'grid-cell')]")
+    @FindBy(xpath = "//tr[4]/td[contains(@class,'grid-cell')]")
     public List<WebElement> anyRowInformationList;
   
     // Eren project code's line ENDS heredf
