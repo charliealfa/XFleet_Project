@@ -37,7 +37,7 @@ Feature: Grid
       | Power (KW)                |
 
 
-  @FLTAPS-1145
+  @FLTAPS-1145 @smoke
   Scenario: verify that column names can be found by Quick Search box
     When the user click the Grid button
     And the user type "location" in Quick Search box
@@ -51,14 +51,14 @@ Feature: Grid
     Then verify that the status of "Color" checkbox changed
 
 
-  @FLTAPS-1147
+  @FLTAPS-1147 @wip
   Scenario: verify that order of columns can be arranged by drag and drop
     When the user click the Grid button
     And the user drag "Model Year" box to "License Plate" box
     Then verify that "Model Year" columns order changed
 
 
-  @FLTAPS-1148
+  @FLTAPS-1148 @smoke
   Scenario: verify that changes in grid settings are displayed in table structure
     When the user click the Grid button
     And the user click "Chassis Number" and "Doors Number"

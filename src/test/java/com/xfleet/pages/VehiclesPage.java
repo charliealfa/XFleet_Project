@@ -2,39 +2,66 @@ package com.xfleet.pages;
 
 import com.xfleet.utilities.BrowserUtils;
 import com.xfleet.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class VehiclesPage extends BasePage {
+
     // ErcanEAK project code's line STARTS here
     @FindBy(xpath = "(//tbody//tr/td[2])[5]")
     public WebElement anyVehicles;
 
     @FindBy(xpath = "//a[@title='Add an event to this record']")
-    public WebElement addEventButton;
+    public WebElement addEventButton;    //#ui-id-1 id of pop up
 
+    @FindBy(id = "ui-id-1 id of pop up")
+    public WebElement AddEventpopUp;
+
+    @FindBy(css = ".control-label.wrap")
+    public List<WebElement> addEventPopUpInptLabels;
+
+    @FindBy(xpath = "//button[text()='Cancel']")
+    public WebElement getAddEventpopUpCancel;
+
+    @FindBy(xpath = "//span[text()='This value should not be blank.']")
+    public WebElement ErrorMsgOfAddEvent;
+
+    @FindBy(css = "button[type='submit']")
+    public WebElement addEventButtonSaveButton;
+
+    public void checkMandatoryItems(List<String> expectedTitles) {
+        try {
+            for (WebElement e : addEventPopUpInptLabels) {
+                if (expectedTitles.contains(e.getText())) {
+                    Assert.assertEquals("required", e.getAttribute("class"));
+                }
+            }
+        } catch (AssertionError assertionError) {
+            assertionError.printStackTrace();
+        } finally {
+            getAddEventpopUpCancel.click();
+        }
+    }
     // ErcanEAK project code's line ENDS here
 
 
     // Eren project code's line STARTS here
-
+  
     @FindBy(xpath = "//a[@title='View']")
     public WebElement eyeIcon;
 
     @FindBy(xpath = "(//a[@data-toggle='dropdown'])[11]")
     public WebElement anyThreeDot;
 
-    @FindBy(xpath = "//tr[6]/td[contains(@class,'grid-cell')]")
+    @FindBy(xpath = "//tr[4]/td[contains(@class,'grid-cell')]")
     public List<WebElement> anyRowInformationList;
-
-
-    // Eren project code's line ENDS here
+  
+    // Eren project code's line ENDS heredf
 
 
     // esalkan project code's line STARTS here
@@ -63,7 +90,7 @@ public class VehiclesPage extends BasePage {
         return dropDownOptionsText;
     }
 
-    public boolean tableSortResult() {
+    public void tableSortResult() {
         int counter = vehicleRows.size();
         List<String> beforeSortRowCellData = new ArrayList<>();
         for (int i = 1; i <= counter; i++) {
@@ -75,10 +102,17 @@ public class VehiclesPage extends BasePage {
         List<String> afterSortRowCellData = new ArrayList<>();
         for (int i = 1; i <= sortCounter; i++) {
             afterSortRowCellData.add(Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]/td[7]")).getText());
+            //return tableSortResult();
         }
-        return Objects.equals(beforeSortRowCellData.get(24), afterSortRowCellData.get(24));
+        //Added By @CharlieAlfa
+        for(int i = 1; i < sortCounter; i++){
+            if (!afterSortRowCellData.get(i).equals("")) {
+                if (!afterSortRowCellData.get(i - 1).equals("")) {
+                    Assert.assertTrue(Integer.parseInt(afterSortRowCellData.get(i).trim()) >= Integer.parseInt(afterSortRowCellData.get(i - 1).trim()));
+                }
+            }
+        }
     }
-
     // esalkan project code's line ENDS here
 
     // Erdem's codes starting
@@ -86,39 +120,144 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//i[@class='fa-chevron-right hide-text']")
     public WebElement nextPageButton;
 
+    @FindBy(xpath = "//i[@class='fa-chevron-left hide-text']")
+    public WebElement previousPageButton;
+
     @FindBy(xpath = "//label[@class='dib'][2]")
     public WebElement textOfTotalPage;
 
     @FindBy(xpath = "//input[@type='number']")
-    public WebElement totalPage;
+    public WebElement pageNumber;
+
+    @FindBy(xpath = "//label[@class='dib'][3]")
+    public WebElement fullText;
+
+    @FindBy(xpath = "//div[@class='btn-group']//div")
+    public WebElement exportGridButton;
+
+    @FindBy(xpath = "//a[@title='CSV']")
+    public WebElement csvFormat;
+
+    @FindBy(xpath = "//a[@title='XLSX']")
+    public WebElement xlsxFormat;
+
+    @FindBy(xpath = "//div[@class='message']")
+    public WebElement exportVerificationMessage;
 
 
     public Integer getTotalPageNumber() {
-
         String text = textOfTotalPage.getText();
         String totalPageNumber = text.split(" ")[1];
         System.out.println(totalPageNumber);
-
-        int ActualTotalPageNumber = Integer.parseInt(totalPageNumber);
-
-        return ActualTotalPageNumber;
+        return Integer.parseInt(totalPageNumber);
     }
 
     public Integer getNumberOfCurrentPage() {
-
         for (int i = 1; i < getTotalPageNumber(); i++) {
             nextPageButton.click();
             BrowserUtils.waitFor(3);
         }
-        String pageNumberText = totalPage.getAttribute("value");
+        String pageNumberText = pageNumber.getAttribute("value");
         System.out.println("pageNumberText = " + pageNumberText);
-        int pageNumber = Integer.parseInt(pageNumberText);
-
-        return pageNumber;
+        return Integer.parseInt(pageNumberText);
     }
+  
+      public Integer getPageNumber() {
+        return Integer.parseInt(pageNumber.getAttribute("value"));
+    }
+
+    public Boolean verificationMessageCSVIsDisplayed() {
+        exportGridButton.click();
+        csvFormat.click();
+        BrowserUtils.waitFor(3);
+        return exportVerificationMessage.isDisplayed();
+    }
+
+    public Boolean verificationMessageXLSXIsDisplayed() {
+
+        exportGridButton.click();
+        xlsxFormat.click();
+        BrowserUtils.waitFor(3);
+        return exportVerificationMessage.isDisplayed();
+    }
+
+    // Erdem's codes finished
+
+    //burak's code begins here.....
+  
+    @FindBy(css = "[class='fa-filter hide-text']")
+    //@FindBy(css = "a[class^='action btn mode-icon-only'][title='Filters']")
+
+    //@FindBy(xpath = "//a[starts-with(@class,'action btn mode-icon-only')]")
+    //@FindBy(linkText = "Filters")
+    public WebElement filterButton;
+
+    @FindBy(css = "a[class^='add-filter-button']")
+    public WebElement manageFiltersButton;
+
+    @FindBy(css = "input[id='ui-multiselect-0-0-option-6']")
+    public WebElement lastOdometerCheckBox;
+
+    @FindBy(xpath = "//div[contains(text(),'Last Odometer')]")
+    public WebElement lastOdometerDropOpener;
+
+    @FindBy(css = "button[class='btn dropdown-toggle']")
+    public WebElement lastOdometerDropDownToggle;
+
+    //All the methods on drop down menu.
+    @FindBy(css = "a[class='dropdown-item choice-value']")
+    public WebElement lastOdometerDropDownMenu;
+
+    //Last odometer drop down toggles options/methods
+    //xpath locaters for containing texts
+
+    @FindBy(xpath = "//a[.='between']")
+    public WebElement lastOdometerDropDownBetween;
+  
+    @FindBy(xpath = "//a[.='not between']")
+    public WebElement lastOdometerDropDownNotBetween;
+  
+    @FindBy(xpath = "//a[.='equals']")
+    public WebElement lastOdometerDropDownEquals;
+  
+    @FindBy(xpath = "//a[.='not equals']")
+    public WebElement lastOdometerDropDownNotEquals;
+  
+    @FindBy(xpath = "//a[.='more than']")
+    public WebElement lastOdometerDropDownMoreThan;
+  
+    @FindBy(xpath = "//a[.='less than']")
+    public WebElement lastOdometerDropDownLessThan;
+  
+    @FindBy(xpath = "//a[.='equals or more than']")
+    public WebElement lastOdometerDropDownEqualsOrMoreThan;
+  
+    @FindBy(xpath = "//a[.='equals or less than']")
+    public WebElement lastOdometerDropDownEqualsOrLessThan;
+  
+    @FindBy(xpath = "//a[.='is empty']")
+    public WebElement lastOdometerDropDownIsEmpty;
+  
+    @FindBy(xpath = "//a[.='is not empty']")
+    public WebElement lastOdometerDropDownIsNotEmpty;
+
+    //input boxes low and top values for the search range
+    @FindBy(css = "input[name='value']")
+    public WebElement lastOdometerLowRange;
+  
+    @FindBy(css = "input[name='value_end']")
+    public WebElement lastOdometerTopRange;
+
+    //last Odometer searching results
+    @FindBy(css = "td[data-column-label='Last Odometer']")
+    public WebElement lastOdometerResults;
+
+    //Update button for low and top input search
+    @FindBy(css = "button[class='btn btn-primary filter-update']")
+    public WebElement lastOdometerUpdateButton;
+
+    //for verify actual result. Locator show us a list of actual results.
+    @FindBy(css = " td[class='number-cell grid-cell grid-body-cell grid-body-cell-LastOdometer']")
+    public WebElement lastOdometerActualResult;
+
 }
-
-
-// Erdem's codes finished
-
-

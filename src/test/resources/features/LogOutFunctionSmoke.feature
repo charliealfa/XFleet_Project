@@ -8,7 +8,7 @@ Feature: LogOutFunctionSmoke
 
 
 
-	@FLTAPS-975 @FLTAPS-981
+	@FLTAPS-975 @FLTAPS-981 @smoke
 	Scenario: Verify Logged out
 		When users click the "Logout" button
 		Then verify page title "Login"
