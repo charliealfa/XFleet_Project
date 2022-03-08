@@ -15,7 +15,7 @@ Feature: Default
 		And the user clicks three dot button
 		Then the user can see delete feature	
 
-	@FLTAPS-1158 @wip
+	@FLTAPS-1158
 	Scenario: Users should see "Delete Confirmation" pop up
 		Given the user is on the login page
 		When the user logged with "storemanager85" "UserUser123"
@@ -72,7 +72,7 @@ Feature: Default
 		And the user clicks delete button in the 'General Information' page
 		Then the user should see "Car deleted" message	
 
-	@FLTAPS-1187
+	@FLTAPS-1187 @kaan
 	Scenario: Deleted car should be removed
 		Given the user is on the login page
 		When the user logged with "storemanager85" "UserUser123"

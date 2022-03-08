@@ -63,6 +63,34 @@ public class VehiclesPage extends BasePage {
   
     // Eren project code's line ENDS heredf
 
+    // Kaan project code's line STARTS here
+
+    @FindBy(xpath = "(//li[@class='launcher-item']/a[@title='Delete'])[last()]")
+    public WebElement deleteIcon;
+
+    @FindBy(xpath = "//*[contains(text(),'Delete Confirm')]")
+    public WebElement deleteMessage;
+
+    @FindBy (xpath = "//*[contains(text(),'You do not have permission to perform this action.')]")
+    public WebElement deletePermissionMessage;
+
+    @FindBy(xpath = "//*[contains(text(),'Yes, Delete')]")
+    public WebElement deleteMessageYesBtn;
+
+    @FindBy(xpath = "//*[contains(text(),'Total of 79 records')]")
+    public WebElement totalCarNumber;
+
+    @FindBy(xpath = "//*[contains(text(),'Item deleted')]")
+    public WebElement itemDeletedMessage;
+
+    @FindBy(xpath = "(//*[@class='grid-row'])[5]")
+    public WebElement anyCarRow;
+
+    @FindBy(xpath = "//*[@class=' btn icons-holder-text no-hash remove-button']")
+    public WebElement generalInfoPageDeleteBtn;
+
+    // Kaan project code's line ENDS heredf
+
 
     // esalkan project code's line STARTS here
 

@@ -9,11 +9,14 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.Random;
+
 public class DeleteCarStepDefinition {
 
     DashBoardPage dashBoardPage = new DashBoardPage();
     VehiclesPage vehiclePage = new VehiclesPage();
     Actions actions = new Actions(Driver.get());
+    Random random = new Random();
 
     @When("the user clicks Fleet,Vehicles module")
     public void the_user_clicks_Fleet_Vehicles_module() {
@@ -23,26 +26,80 @@ public class DeleteCarStepDefinition {
 
     @When("the user clicks three dot button")
     public void the_user_clicks_three_dot_button() {
-        actions.moveToElement(vehiclePage.anyThreeDot).perform();
         BrowserUtils.waitFor(3);
+        actions.moveToElement(vehiclePage.anyThreeDot).perform();
+
     }
 
     @Then("the user can see delete feature")
     public void the_user_can_see_delete_feature() {
-        vehiclePage.eyeIcon.isDisplayed();
+        BrowserUtils.waitFor(3);
+        actions.moveToElement(vehiclePage.deleteIcon).perform();
+        BrowserUtils.waitFor(3);
+        Assert.assertTrue(vehiclePage.deleteIcon.isDisplayed());
         vehiclePage.logOut();
     }
 
     @When("the user clicks delete button")
     public void the_user_clicks_delete_button() {
-        //((JavascriptExecutor) Driver.get()).executeScript("arguments[0].click();", vehiclePage.deleteBtn);
-        vehiclePage.eyeIcon.click();
+        BrowserUtils.waitFor(3);
+        actions.moveToElement(vehiclePage.deleteIcon).perform();
+        BrowserUtils.waitFor(3);
+        vehiclePage.deleteIcon.click();
     }
 
     @Then("the user should see {string} pop up")
     public void the_user_should_see_pop_up(String string) {
-
+        Assert.assertTrue(vehiclePage.deleteMessage.isDisplayed());
+        vehiclePage.logOut();
     }
 
+    @Then("the user should see {string} message")
+    public void the_user_should_see_message(String string) {
+        BrowserUtils.waitFor(3);
+        vehiclePage.deleteMessageYesBtn.click();
+        BrowserUtils.waitFor(3);
+        Assert.assertTrue(vehiclePage.deletePermissionMessage.isDisplayed());
+        vehiclePage.logOut();
+    }
+
+    @When("the user clicks delete button any row of car")
+    public void the_user_clicks_delete_button_any_row_of_car() {
+        BrowserUtils.waitFor(3);
+        vehiclePage.deleteIcon.click();
+        BrowserUtils.waitFor(3);
+        vehiclePage.deleteMessageYesBtn.click();
+        BrowserUtils.waitFor(2);
+    }
+
+    @Then("the user can delete any car in the list")
+    public void the_user_can_delete_any_car_in_the_list() {
+        Assert.assertTrue(vehiclePage.itemDeletedMessage.isDisplayed());
+        vehiclePage.logOut();
+    }
+
+    @When("the user clicks any car row")
+    public void the_user_clicks_any_car_row() {
+        BrowserUtils.waitFor(3);
+        vehiclePage.anyCarRow.click();
+    }
+
+    @When("the user clicks delete button in the {string} page")
+    public void the_user_clicks_delete_button_in_the_page(String string) {
+        BrowserUtils.waitFor(3);
+        vehiclePage.generalInfoPageDeleteBtn.click();
+    }
+
+    @When("the user deleted any car")
+    public void the_user_deleted_any_car() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("the user car should be deleted")
+    public void the_user_car_should_be_deleted() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
 
 }
