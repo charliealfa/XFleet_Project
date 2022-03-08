@@ -35,6 +35,7 @@ public class ManageFilterStepDefs {
 
     @And("The user clicks on filterIcon")
     public void theUserClicksOnFilterIcon() {
+        gridPage.waitUntilLoaderScreenDisappear();//Added By @CharlieAlfa
         BrowserUtils.waitForClickablility(gridPage.filterIcon, 10);
         gridPage.filterIcon.click();
     }
@@ -87,7 +88,7 @@ public class ManageFilterStepDefs {
 
         for (int i = 1; i < filterOptions.size(); i++) {
             Driver.get().findElement(By.xpath("(//input[@title])[" + i + "]")).click();
-            BrowserUtils.waitFor(3);
+            BrowserUtils.waitFor(1);//Edited By @CharlieAlfa
             boolean selected = Driver.get().findElement(By.xpath("(//input[@title])[" + i + "]")).isSelected();
             Assert.assertTrue("Verify all filters are selected", selected);
         }
@@ -101,6 +102,7 @@ public class ManageFilterStepDefs {
 
     @Then("The user can remove all filters by clicking on the reset icon")
     public void the_user_can_remove_all_filters_by_clicking_on_the_reset_icon() {
+        BrowserUtils.waitFor(1);//Added By @CharlieAlfa
         List<String> filterOptions = BrowserUtils.getElementsText(gridPage.manageFilterOptions);
         for (int i = 1; i < filterOptions.size(); i++) {
             boolean selected = Driver.get().findElement(By.xpath("(//input[@title])[" + i + "]")).isSelected();
