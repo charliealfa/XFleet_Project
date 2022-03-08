@@ -33,7 +33,7 @@ Feature:Manage Filter Function
       | Horsepower                |
       | Horsepower Taxation       |
       | Power (KW)                |
-
+  @smoke
   Scenario:Apply filters by clicking
     When The user clicks on Manage Filter Menu
     Then The user can select the filter name by clicking from the Manage filters menu

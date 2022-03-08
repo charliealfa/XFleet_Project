@@ -1,7 +1,7 @@
 @wip
 Feature: As a user, I should be able to see all vehicle information in a table under Fleet-Vehicle page
 
-  @FLTAPS-1195
+  @FLTAPS-1195 @smoke
   Scenario Outline: All user types can see all vehicle information under 'Fleet-Vehicles' module
 
     Given the user is on the login page

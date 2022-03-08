@@ -2,7 +2,7 @@
 Feature: LoginPageSmoke
 
 
-	@FLTAPS-968 @FLTAPS-980
+	@FLTAPS-968 @FLTAPS-980 @smoke
 	Scenario Outline: Login Function With Valid Credentials
 		Given the user is on the login page
 		When the user logged with "<username>" "<password>"
@@ -15,7 +15,7 @@ Feature: LoginPageSmoke
 		| storemanager85  | UserUser123 | Dashboard       |
 
 
-	@FLTAPS-969 @FLTAPS-980
+	@FLTAPS-969 @FLTAPS-980 @smoke
 	Scenario Outline: Login Function With Invalid Credentials
 				Given the user is on the login page
 		       When the user logged with "<username>" "<password>"
@@ -60,7 +60,7 @@ Feature: LoginPageSmoke
 		       Then verify the link Remember Me is clickable
 
 
-	@FLTAPS-973 @FLTAPS-980
+	@FLTAPS-973 @FLTAPS-980 @smoke
 	Scenario Outline: Verify Enter Key
 				Given the user is on the login page
 		       When the user logged with enter key "<username>" "<password>"
