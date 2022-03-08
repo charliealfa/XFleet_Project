@@ -1,4 +1,4 @@
-@new
+@FLTAPS1183
 Feature:Manage Filter Function
 
   Background:
@@ -6,10 +6,10 @@ Feature:Manage Filter Function
     When The user navigates to "Fleet" "Vehicles"
     And The user clicks on filterIcon
 
-
+  @FLTAPS1178
   Scenario:Manage Filter Button visible
     Then The user should see Manage Filter button became visible
-
+  @FLTAPS1179
   Scenario: Manage Filter options list
     When The user clicks on Manage Filter Menu
     Then The user should see the following Manage Filter options
@@ -33,15 +33,16 @@ Feature:Manage Filter Function
       | Horsepower                |
       | Horsepower Taxation       |
       | Power (KW)                |
-  @smoke
+
+  @FLTAPS1180 @smoke
   Scenario:Apply filters by clicking
     When The user clicks on Manage Filter Menu
     Then The user can select the filter name by clicking from the Manage filters menu
-
+  @FLTAPS1181
   Scenario:Apply filters by typing
     When The user clicks on Manage Filter Menu
     Then The user can select the filter name by typing from the Manage filters menu
-
+  @FLTAPS1182
   Scenario:Apply multiple filters at the same time and Remove the all
     When The user clicks on Manage Filter Menu
     Then The user can select multiple filters at the same time from the Manage filters menu
