@@ -1,4 +1,4 @@
-@new
+@FLTAPS-1183
 Feature:Manage Filter Function
 
   Background:
