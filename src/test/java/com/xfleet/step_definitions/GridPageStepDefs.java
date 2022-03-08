@@ -24,6 +24,7 @@ public class GridPageStepDefs {
 
     @When("the user navigates to {string} {string}")
     public void theUserNavigatesTo(String tab, String module) {
+        BrowserUtils.waitForPageToLoad(15);
         new GridPage().navigateToModule(tab, module);
         new GridPage().waitUntilLoaderScreenDisappear();
     }
@@ -68,6 +69,7 @@ public class GridPageStepDefs {
 
     @And("the user drag {string} box to {string} box")
     public void theUserDragBoxToBox(String drag, String drop) {
+        BrowserUtils.waitFor(1);//Added By @CharlieAlfa
         new GridPage().dragAndDropGridElement(drag,drop);
     }
 

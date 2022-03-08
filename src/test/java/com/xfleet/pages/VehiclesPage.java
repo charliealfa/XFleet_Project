@@ -90,7 +90,7 @@ public class VehiclesPage extends BasePage {
         return dropDownOptionsText;
     }
 
-    public boolean tableSortResult() {
+    public void tableSortResult() {
         int counter = vehicleRows.size();
         List<String> beforeSortRowCellData = new ArrayList<>();
         for (int i = 1; i <= counter; i++) {
@@ -102,10 +102,17 @@ public class VehiclesPage extends BasePage {
         List<String> afterSortRowCellData = new ArrayList<>();
         for (int i = 1; i <= sortCounter; i++) {
             afterSortRowCellData.add(Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]/td[7]")).getText());
+            //return tableSortResult();
         }
-        return tableSortResult();
+        //Added By @CharlieAlfa
+        for(int i = 1; i < sortCounter; i++){
+            if (!afterSortRowCellData.get(i).equals("")) {
+                if (!afterSortRowCellData.get(i - 1).equals("")) {
+                    Assert.assertTrue(Integer.parseInt(afterSortRowCellData.get(i).trim()) >= Integer.parseInt(afterSortRowCellData.get(i - 1).trim()));
+                }
+            }
+        }
     }
-
     // esalkan project code's line ENDS here
 
     // Erdem's codes starting
