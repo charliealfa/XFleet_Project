@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class VehiclesPage extends BasePage {
 
@@ -103,7 +104,7 @@ public class VehiclesPage extends BasePage {
         for (int i = 1; i <= sortCounter; i++) {
             afterSortRowCellData.add(Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]/td[7]")).getText());
         }
-        return tableSortResult();
+        return Objects.equals(beforeSortRowCellData.get(24), afterSortRowCellData.get(24));
     }
 
     // esalkan project code's line ENDS here
