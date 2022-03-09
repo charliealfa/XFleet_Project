@@ -1,4 +1,4 @@
-@FLTAPS-1139
+@FLTAPS-1139 @regression
 Feature: As a user, I should be able to arrange vehicle table data under Fleet-Vehicle page
 
   # ESALKAN xFleet Project Features STARTS HERE

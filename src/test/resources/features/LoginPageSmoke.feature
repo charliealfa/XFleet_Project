@@ -1,4 +1,4 @@
-@FLTAPS-979 @smoke
+@FLTAPS-979 @regression
 Feature: LoginPageSmoke
 
 

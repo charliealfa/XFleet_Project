@@ -1,4 +1,4 @@
-@FLTAPS1183
+@FLTAPS1183 @regression
 Feature:Manage Filter Function
 
   Background:

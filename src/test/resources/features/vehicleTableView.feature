@@ -1,4 +1,4 @@
-@wip
+@wip @regression
 Feature: As a user, I should be able to see all vehicle information in a table under Fleet-Vehicle page
 
   @FLTAPS-1195 @smoke

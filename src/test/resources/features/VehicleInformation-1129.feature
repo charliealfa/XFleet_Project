@@ -1,4 +1,4 @@
-@FLTAPS-1163
+@FLTAPS-1163 @regression
 Feature: Vehicle Information
 
   @FLTAPS-1165

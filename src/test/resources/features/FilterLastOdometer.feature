@@ -1,4 +1,4 @@
-@lom
+@lom @regression
 Feature: Vehicle - Filters - Last Odometer filter menu
 
 	#1- User can select "Last Odometer" filter under 'Fleet-Vehicles' page{color}

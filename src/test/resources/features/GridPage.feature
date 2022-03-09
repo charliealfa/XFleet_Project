@@ -1,4 +1,4 @@
-@FLTAPS-1150
+@FLTAPS-1150 @regression
 Feature: Grid
 
   Background:

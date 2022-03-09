@@ -1,4 +1,4 @@
-@FLTAPS-982
+@FLTAPS-982 @regression
 Feature: LogOutFunctionSmoke
 
 	Background:
