@@ -51,13 +51,18 @@ public class VehiclesPageStepDefs {
 
     @And("user click on a tab for sorting records")
     public void user_click_on_a_tab_for_sorting_records() {
-        Assert.assertTrue(vehiclesPage.tableSortResult());
+        //Assert.assertFalse(vehiclesPage.tableSortResult());
+        vehiclesPage.tableSortResult();
     }
 
     @Then("user click on the reset button")
     public void user_click_on_the_reset_button(){
         BrowserUtils.waitForPageToLoad(10);
-        Assert.assertFalse(vehiclesPage.tableSortReset());
+        vehiclesPage.resetButton.click();
+        BrowserUtils.waitForPageToLoad(10);
+        BrowserUtils.waitFor(5);
+        //Assert.assertFalse(vehiclesPage.tableSortResult());
+        vehiclesPage.tableSortResult();
     }
 
 
@@ -96,7 +101,7 @@ public class VehiclesPageStepDefs {
 
     @Then("user should display add event pop up")
     public void userShouldDisplayAddEventPopUp() {
-
+        //Added By @CharlieAlfa
         try {
             Assert.assertTrue(vehiclesPage.AddEventpopUp.isDisplayed());
         }catch (Exception e){
@@ -109,11 +114,16 @@ public class VehiclesPageStepDefs {
 
     @Then("if any compulsary fields empty, error message should display")
     public void ifAnyCompulsaryFieldsEmptyErrorMessageShouldDisplay() {
-
-        vehiclesPage.addEventButton.click();
-        vehiclesPage.waitUntilLoaderScreenDisappear();
-        vehiclesPage.addEventButtonSaveButton.click();
-        Assert.assertTrue(vehiclesPage.ErrorMsgOfAddEvent.isDisplayed());
+        //Added By @CharlieAlfa
+        try {
+            vehiclesPage.waitUntilLoaderScreenDisappear();
+            vehiclesPage.addEventButtonSaveButton.click();
+            Assert.assertTrue(vehiclesPage.ErrorMsgOfAddEvent.isDisplayed());
+        }catch (AssertionError as){
+            as.printStackTrace();
+        }finally {
+            vehiclesPage.getAddEventpopUpCancel.click();
+        }
 
     }
 

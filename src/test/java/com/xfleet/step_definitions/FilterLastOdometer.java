@@ -29,7 +29,8 @@ public class FilterLastOdometer {
     public void user_clicks_the_Filter_button() {
         //  Thread.sleep(10000);
         //BrowserUtils.waitForVisibility(vehiclesPage.filterButton,10);
-        BrowserUtils.waitForClickablility(vehiclesPage.filterButton, 5).click();
+        vehiclesPage.waitUntilLoaderScreenDisappear();//Added By @CharlieAlfa
+        BrowserUtils.waitForClickablility(vehiclesPage.filterButton, 15).click();
         //action.moveToElement(vehiclesPage.filterButton).click().perform();
     }
 

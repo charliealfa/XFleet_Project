@@ -37,7 +37,7 @@ Feature: Grid
       | Power (KW)                |
 
 
-  @FLTAPS-1145
+  @FLTAPS-1145 @smoke
   Scenario: verify that column names can be found by Quick Search box
     When the user click the Grid button
     And the user type "location" in Quick Search box
@@ -58,7 +58,7 @@ Feature: Grid
     Then verify that "Model Year" columns order changed
 
 
-  @FLTAPS-1148
+  @FLTAPS-1148 @smoke
   Scenario: verify that changes in grid settings are displayed in table structure
     When the user click the Grid button
     And the user click "Chassis Number" and "Doors Number"

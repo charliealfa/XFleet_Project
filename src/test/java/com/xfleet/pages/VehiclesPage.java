@@ -9,7 +9,6 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class VehiclesPage extends BasePage {
 
@@ -59,10 +58,38 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "(//a[@data-toggle='dropdown'])[11]")
     public WebElement anyThreeDot;
 
-    @FindBy(xpath = "//tr[6]/td[contains(@class,'grid-cell')]")
+    @FindBy(xpath = "//tr[4]/td[contains(@class,'grid-cell')]")
     public List<WebElement> anyRowInformationList;
   
     // Eren project code's line ENDS heredf
+
+    // Kaan project code's line STARTS here
+
+    @FindBy(xpath = "(//li[@class='launcher-item']/a[@title='Delete'])[last()]")
+    public WebElement deleteIcon;
+
+    @FindBy(xpath = "//*[contains(text(),'Delete Confirm')]")
+    public WebElement deleteMessage;
+
+    @FindBy (xpath = "//*[contains(text(),'You do not have permission to perform this action.')]")
+    public WebElement deletePermissionMessage;
+
+    @FindBy(xpath = "//*[contains(text(),'Yes, Delete')]")
+    public WebElement deleteMessageYesBtn;
+
+    @FindBy(xpath = "//*[contains(text(),'Total of')]")
+    public WebElement totalCarNumber;
+
+    @FindBy(xpath = "//*[contains(text(),'Item deleted')]")
+    public WebElement itemDeletedMessage;
+
+    @FindBy(xpath = "(//*[@class='grid-row'])[5]")
+    public WebElement anyCarRow;
+
+    @FindBy(xpath = "//*[@class=' btn icons-holder-text no-hash remove-button']")
+    public WebElement generalInfoPageDeleteBtn;
+
+    // Kaan project code's line ENDS heredf
 
 
     // esalkan project code's line STARTS here
@@ -91,33 +118,29 @@ public class VehiclesPage extends BasePage {
         return dropDownOptionsText;
     }
 
-    public boolean tableSortResult() {
-        boolean flag = false;
-        int beforeSortLicensePlate = Driver.get().findElement(By.xpath("//table/tbody/tr[1]/td[2]")).getText().charAt(0);
-        modelYearTab.click();
-        BrowserUtils.waitFor(2);
-        modelYearTab.click();
-        BrowserUtils.waitFor(2);
-        modelYearTab.click();
-        int afterSortLicensePlage = Driver.get().findElement(By.xpath("//table/tbody/tr[1]/td[2]")).getText().charAt(0);
-        if (afterSortLicensePlage > beforeSortLicensePlate){
-            flag = true;
+    public void tableSortResult() {
+        int counter = vehicleRows.size();
+        List<String> beforeSortRowCellData = new ArrayList<>();
+        for (int i = 1; i <= counter; i++) {
+            beforeSortRowCellData.add(Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]/td[7]")).getText());
         }
-        return flag;
-    }
-
-    public boolean tableSortReset() {
-        boolean flag = false;
-        String beforeSortLicensePlate = Driver.get().findElement(By.xpath("//table/tbody/tr[1]/td[2]")).getText();
-        resetButton.click();
+        modelYearTab.click();
         BrowserUtils.waitFor(2);
-        String afterResetFirstLicensePlage = Driver.get().findElement(By.xpath("//table/tbody/tr[1]/td[2]")).getText();
-        if (beforeSortLicensePlate.equals(afterResetFirstLicensePlage)){
-            flag = true;
+        int sortCounter = vehicleRows.size();
+        List<String> afterSortRowCellData = new ArrayList<>();
+        for (int i = 1; i <= sortCounter; i++) {
+            afterSortRowCellData.add(Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]/td[7]")).getText());
+            //return tableSortResult();
         }
-        return flag;
+        //Added By @CharlieAlfa
+        for(int i = 1; i < sortCounter; i++){
+            if (!afterSortRowCellData.get(i).equals("")) {
+                if (!afterSortRowCellData.get(i - 1).equals("")) {
+                    Assert.assertTrue(Integer.parseInt(afterSortRowCellData.get(i).trim()) >= Integer.parseInt(afterSortRowCellData.get(i - 1).trim()));
+                }
+            }
+        }
     }
-
     // esalkan project code's line ENDS here
 
     // Erdem's codes starting
