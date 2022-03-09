@@ -145,16 +145,42 @@ public class VehiclesPage extends BasePage {
 
     }
 
-
 // Erdem's codes finished
+
 
 //Huseyin's code STARTS here
 
     @FindBy(xpath = "/html/body/div[5]/div[2]/div/div/div/form/fieldset/div[1]/div[3]/div[2]/span/span[1]")
     public WebElement popUpColorSelect;
 
+    @FindBy(xpath ="//input[starts-with(@id,'oro_calendar_event_form_allDay-uid')]")
+    public WebElement AllDayEventCheckbox;
 
-//  Huseyin's project code's line ENDS here
+    @FindBy(xpath ="//input[starts-with(@id,'time_selector_oro_calendar_event_form_start-uid')]")
+    public WebElement timeBoxes;
+
+    @FindBy(xpath = "//input[starts-with(@id,'recurrence-repeat')]")
+    public WebElement repeatCheckbox;
+
+    @FindBy(css = ".recurrence-repeats__select")
+    public WebElement repeatDropdown;
+
+    @FindBy(xpath = "//div[@class='controls recurrence-subview-control recurrence-subview-control__items']//input[@type='radio']")
+    public List<WebElement> endsOptions;
+
+    public void verifyEndingOptions() {
+        for (WebElement e:endsOptions) {
+            Assert.assertTrue(e.isEnabled());
+        }
+    }
+    @FindBy(xpath = "//input[starts-with(@id,'oro_calendar_event_form_title-uid')]")
+    public WebElement eventTitle;
+    public String anyTitleName = "bmw";
+
+    @FindBy(xpath = "//div[@class='accordion-heading clearfix']//strong")
+    public List<WebElement> saveOptions;
+
+//  Huseyin code ENDS here
 
 }
 

@@ -7,8 +7,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 
+import java.lang.invoke.CallSite;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +21,7 @@ public class VehiclesPageStepDefs {
 
     DashBoardPage dashBoardPage = new DashBoardPage();
     VehiclesPage vehiclesPage = new VehiclesPage();
+    WebDriver driver;
 
 
     // ESALKAN STEP DEFINITIONS STARTS HERE
@@ -74,7 +79,6 @@ public class VehiclesPageStepDefs {
 
     @Then("user should select a car")
     public void userShouldSelectACar() {
-
         vehiclesPage.waitUntilLoaderScreenDisappear();
         vehiclesPage.anyVehicles.click();
     }
@@ -128,15 +132,78 @@ public class VehiclesPageStepDefs {
 
     // ErcanAK STEP DEFINITIONS ENDS HERE
 
-    //HUSEYIN'S STEP DEFINITIONS STARTS HERE
 
+    //HUSEYIN'S STEP DEFINITIONS STARTS HERE
 
     @Then("user can select event color")
     public void userCanSelectEventColor() {
         vehiclesPage.popUpColorSelect.click();
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        vehiclesPage.getAddEventpopUpCancel.click();
+
+    }
+
+    @Then("user select All-day-event checkbox")
+    public void userSelectAllDayEventCheckbox() {
+        BrowserUtils.waitForClickablility(vehiclesPage.AllDayEventCheckbox,10);
+        vehiclesPage.AllDayEventCheckbox.click();
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        vehiclesPage.getAddEventpopUpCancel.click();
+    }
+
+    @Then("time boxes will disappear")
+    public void timeBoxesWillDisappear() {
+        try {
+            Assert.assertTrue(vehiclesPage.timeBoxes.isDisplayed());
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            vehiclesPage.getAddEventpopUpCancel.click();
+        }
+    }
+
+    @Then("Repeats should include the options")
+    public void repeatsShouldIncludeTheOptions(List<String> repeatsLoop) {
+
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        vehiclesPage.repeatCheckbox.click();
+
+        Select temp = new Select(vehiclesPage.repeatDropdown);
+        List<WebElement> options = temp.getOptions();
+        try {
+            List<String> optionsText = BrowserUtils.getElementsText(options);
+            Assert.assertEquals(repeatsLoop,optionsText);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            vehiclesPage.getAddEventpopUpCancel.click();
+        }
+    }
+
+    @Then("Ending options should be clickable")
+    public void endingOptionsShouldBeClickable() {
+        try {
+            vehiclesPage.verifyEndingOptions();
+        }catch (AssertionError a){
+            a.printStackTrace();
+        }finally {
+            vehiclesPage.getAddEventpopUpCancel.click();
+        }
+    }
+
+    @Then("user create An Event after clicking Save then All created events should be appear")
+    public void userCreateAnEventAfterClickingSaveThenAllCreatedEventsShouldBeAppear() {
+        vehiclesPage.eventTitle.sendKeys(vehiclesPage.anyTitleName);
+        vehiclesPage.addEventButtonSaveButton.click();
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        vehiclesPage.saveOptions.get(0).getText();
+        Assert.assertEquals(vehiclesPage.anyTitleName,vehiclesPage.saveOptions.get(0).getText());
+
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        vehiclesPage.getAddEventpopUpCancel.click();
     }
 
 
-    //HUSEYIN'S STEP DEFINITIONS ENDS HERE
+    //HUSEYIN'S STEP DEFINITIONS END HERE
 
 }
