@@ -1,7 +1,7 @@
 @FLTAPS-1203
 Feature: Default
 
-	@FLTAPS-1156
+	@FLTAPS-1156 @kaan
 	Scenario: User can see delete button
 		Given the user is on the login page
 		When the user logged with "storemanager85" "UserUser123"
@@ -15,7 +15,7 @@ Feature: Default
 		And the user clicks three dot button
 		Then the user can see delete feature	
 
-	@FLTAPS-1158
+	@FLTAPS-1158 @kaan
 	Scenario: Users should see "Delete Confirmation" pop up
 		Given the user is on the login page
 		When the user logged with "storemanager85" "UserUser123"
@@ -31,7 +31,7 @@ Feature: Default
 		And the user clicks delete button
 		Then the user should see "Delete Confirmation" pop up	
 
-	@FLTAPS-1184
+	@FLTAPS-1184 @kaan
 	Scenario: Driver can't see "You do not have permission to perform this action"
 		Given the user is on the login page
 		When the user logged with "user10" "UserUser123"
@@ -40,7 +40,7 @@ Feature: Default
 		And the user clicks delete button
 		Then the user should see "You do not have permission to perform this action" message	
 
-	@FLTAPS-1185
+	@FLTAPS-1185 @kaan
 	Scenario: "Item deleted" message should be displayed
 		Given the user is on the login page
 		When the user logged with "storemanager85" "UserUser123"
@@ -56,7 +56,7 @@ Feature: Default
 		And the user clicks delete button any row of car
 		Then the user can delete any car in the list	
 
-	@FLTAPS-1186
+	@FLTAPS-1186 @kaan
 	Scenario: 'Sales Manager' and 'Store Manager' can delete any car in 'General Information' page
 		Given the user is on the login page
 		When the user logged with "storemanager85" "UserUser123"

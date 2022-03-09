@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/xfleet/step_definitions",
         dryRun = false,
-        tags = "@kaan"
+        tags = "@FLTAPS-1186"
 
 )
 public class CukesRunner {

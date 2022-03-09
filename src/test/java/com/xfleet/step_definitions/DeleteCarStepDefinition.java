@@ -61,7 +61,7 @@ public class DeleteCarStepDefinition {
         BrowserUtils.waitFor(3);
         vehiclePage.deleteMessageYesBtn.click();
         BrowserUtils.waitFor(3);
-        Assert.assertTrue(vehiclePage.deletePermissionMessage.isDisplayed());
+        Assert.assertTrue(vehiclePage.carDeletedMessage.isDisplayed());
         vehiclePage.logOut();
     }
 

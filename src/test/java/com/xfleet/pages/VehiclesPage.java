@@ -83,7 +83,10 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//*[contains(text(),'Item deleted')]")
     public WebElement itemDeletedMessage;
 
-    @FindBy(xpath = "(//*[@class='grid-row'])[5]")
+    @FindBy(xpath = "//*[contains(text(),'Car deleted')]")
+    public WebElement carDeletedMessage;
+
+    @FindBy(xpath = "(//*[starts-with(@class,'grid-row')])[5]")
     public WebElement anyCarRow;
 
     @FindBy(xpath = "//*[@class=' btn icons-holder-text no-hash remove-button']")
