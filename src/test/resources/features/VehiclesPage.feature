@@ -3,7 +3,7 @@ Feature: As a user, I should be able to arrange vehicle table data under Fleet-V
 
   # ESALKAN xFleet Project Features STARTS HERE
   # 1- User can arrange rows/vehicle numbers to be displayed by clicking on 'View Per Page' button under Fleet-Vehicles module
-  @FLTAPS-1137 @FLTAPS-1139
+  @FLTAPS-1137 @FLTAPS-1139 @smoke
   Scenario Outline: View Per Page Button Options Feature
     Given the user is on the login page
     When the user logged with "<username>" "<password>"
@@ -21,7 +21,7 @@ Feature: As a user, I should be able to arrange vehicle table data under Fleet-V
       | storemanager85  | UserUser123 | Dashboard |
 
   # 2- The value of 'View Per Page' should be '25' by default
-  @FLTAPS-1138 @FLTAPS-1139
+  @FLTAPS-1138 @FLTAPS-1139 @smoke
   Scenario Outline: View Per Page Dropdown Default Value Feature
     Given the user is on the login page
     When the user logged with "<username>" "<password>"
@@ -61,7 +61,7 @@ Feature: As a user, I should be able to arrange vehicle table data under Fleet-V
 
     # 4- User can sort a column in ascending or descending order by clicking the column name
     # 5- User can remove all sorting and filtering on the page by using the reset button
-  @FLTAPS-1152 @FLTAPS-1139
+  @FLTAPS-1152 @FLTAPS-1139 @smoke
   Scenario Outline: All Cars Page Table Sorting Feature
     Given the user is on the login page
     When the user logged with "<username>" "<password>"
