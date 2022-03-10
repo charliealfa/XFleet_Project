@@ -34,7 +34,7 @@ Feature:Manage Filter Function
       | Horsepower Taxation       |
       | Power (KW)                |
 
-  @FLTAPS1180 @smoke
+  @FLTAPS1180 @smoke @FLTAPS-1210
   Scenario:Apply filters by clicking
     When The user clicks on Manage Filter Menu
     Then The user can select the filter name by clicking from the Manage filters menu

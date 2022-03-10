@@ -7,7 +7,7 @@ Feature: Default
 		Then the user logged with "salesmanager120" "UserUser123"
 		When the user navigates to "Fleet" "Vehicles"
 
-	@FLTAPS-1135
+	@FLTAPS-1135 @FLTAPS-1210 @smoke
 	Scenario: as a salesmanager sould add event
 		Then user should select any car or row
 		Then user should display add event button
@@ -25,7 +25,7 @@ Feature: Default
 		Then user can click add event button
 		Then user should display add event pop up
 
-	@FLTAPS-1159 @FLTAPS-1161
+	@FLTAPS-1159 @FLTAPS-1161 @FLTAPS-1210 @smoke
 	Scenario: mandatory fields in add Event (auto ercan)
 
 		Then user should select any car or row

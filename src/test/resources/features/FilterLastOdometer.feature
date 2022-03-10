@@ -3,7 +3,7 @@ Feature: Vehicle - Filters - Last Odometer filter menu
 
 	#1- User can select "Last Odometer" filter under 'Fleet-Vehicles' page{color}
 
-	@FLTAPS-1169 @FLTAPS-1189 @smoke
+	@FLTAPS-1169 @FLTAPS-1189 @smoke @FLTAPS-1210
 	Scenario: Vehicles_Filter_Last Odometer_selecting
 		    Given the user is on the login page
 		    And the user logged with "user1" "UserUser123"

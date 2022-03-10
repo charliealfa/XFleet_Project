@@ -1,7 +1,7 @@
 @FLTAPS-1203
 Feature: Default
 
-	@FLTAPS-1156
+	@FLTAPS-1156 @FLTAPS-1210 @smoke
 	Scenario: User can see delete button
 		Given the user is on the login page
 		When the user logged with "storemanager85" "UserUser123"
@@ -31,7 +31,7 @@ Feature: Default
 		And the user clicks delete button
 		Then the user should see "Delete Confirmation" pop up	
 
-	@FLTAPS-1184
+	@FLTAPS-1184 @FLTAPS-1210 @smoke
 	Scenario: Driver can't see "You do not have permission to perform this action"
 		Given the user is on the login page
 		When the user logged with "user10" "UserUser123"
