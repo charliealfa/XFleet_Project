@@ -10,27 +10,37 @@ Feature: user should be able to use the "Driver" filter under the Fleet-Vehicles
     And user clicks "Filters" icon button
     And user clicks "Manage filters" drop down menu
     And user clicks "Driver" check box
-
-  @FLTAPS-1188
-  Scenario: User can select "Driver" filter under 'Fleet-Vehicles' module
-    Then user navigates to "Fleet" "Vehicles"
-    And user clicks "Filters" icon button
-    And user clicks "Manage filters" drop down menu
-    And user clicks "Driver" check box
-
-
-  @o @FLTAPS-1190
-  Scenario: "Driver" filter should provide the methods
-    And user clicks "Driver All" drop down menu
-    And user clicks "Contains" drop down menu
+    And user clicks "Driver All" drop down
+    And user clicks "Contains" drop down menu button
     Then list of methods should be displayed
 
+  #@FLTAPS-1188
+  #Scenario: User can select "Driver" filter under 'Fleet-Vehicles' module
+    #Then user navigates to "Fleet" "Vehicles"
+    #And user clicks "Filters" icon button
+    #And user clicks "Manage filters" drop down menu
+    #And user clicks "Driver" check box
 
-    @FLTAPS-1191
-    Scenario: "Contains" method testing
-      Given user inputs "Miss" keyword into text box
-      When user clicks "Update" button
-      Then results with "Miss" are displayed only
+
+  #@FLTAPS-1190
+  #Scenario: "Driver" filter should provide the methods
+    #And user clicks "Driver All" drop down
+    #And user clicks "Contains" drop down menu button
+    #Then list of methods should be displayed
+
+
+    #@FLTAPS-1191
+    #Scenario: "Contains" method testing
+      #Given user inputs keyword into text box
+      #When user clicks "Update" button
+      #Then results with "Miss" are displayed only
+
+
+  @FLTAPS-1191
+  Scenario: Methods click test
+    Given user clicks methodsList drop down menu list
+    Then user clicks "Update" button
+
 
 
 

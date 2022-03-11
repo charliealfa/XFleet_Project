@@ -1,6 +1,7 @@
 package com.xfleet.step_definitions;
 
 import com.xfleet.pages.DashBoardPage;
+import com.xfleet.pages.DriverFilterPage;
 import com.xfleet.pages.LoginPage;
 import com.xfleet.utilities.BrowserUtils;
 import com.xfleet.utilities.ConfigurationReader;
@@ -10,10 +11,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 
-//Driver Filter
+
 public class FLTAPS1188 {
 
     LoginPage loginPage = new LoginPage();
+    DriverFilterPage driverFilterPage = new DriverFilterPage();
 
 
     @Given("user is on the login page")
@@ -41,19 +43,23 @@ public class FLTAPS1188 {
 
     @Then("user clicks {string} icon button")
     public void user_clicks_icon_button(String filtersIconButton) {
-        Driver.get().findElement(By.xpath("//a[@title='Filters']")).click();
+        BrowserUtils.waitForPageToLoad(6);
+        BrowserUtils.waitFor(6);
+        driverFilterPage.filterIconButton.click();
     }
 
     @Then("user clicks {string} drop down menu")
     public void user_clicks_drop_down_menu(String manageFiltersDropDownMenu) {
-        Driver.get().findElement(By.className("add-filter-button")).click();
+        BrowserUtils.waitForPageToLoad(6);
+        driverFilterPage.manageFiltersDropDown.click();
     }
 
 
     @Then("user clicks {string} check box")
     public void user_clicks_check_box(String driverCheckBox) {
-        Driver.get().findElement(By.cssSelector("input[value='Driver']")).click();
-        System.out.println("driver is clicked");
+        BrowserUtils.waitFor(6);
+        driverFilterPage.driverCheckBox.click();
+        System.out.println("driver check box is clicked");
         BrowserUtils.waitFor(6);
     }
 
