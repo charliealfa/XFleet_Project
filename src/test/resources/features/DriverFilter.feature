@@ -29,17 +29,22 @@ Feature: user should be able to use the "Driver" filter under the Fleet-Vehicles
     #Then list of methods should be displayed
 
 
-    #@FLTAPS-1191
-    #Scenario: "Contains" method testing
-      #Given user inputs keyword into text box
-      #When user clicks "Update" button
-      #Then results with "Miss" are displayed only
+  #@FLTAPS-1191
+  #Scenario: "Contains" method testing
+    #Given user inputs "Miss" into text box
+    #When user clicks "Update" button
+    #Then results with "Miss" are displayed only
 
-
-  @FLTAPS-1191
+  @Methods
   Scenario: Methods click test
     Given user clicks methodsList drop down menu list
-    Then user clicks "Update" button
+
+  @nonAlphabeticCharactersTesting
+  Scenario: none of methods should not accept non alphabetic characters
+    Given user clicks checks non alphabetic characters
+
+
+
 
 
 
